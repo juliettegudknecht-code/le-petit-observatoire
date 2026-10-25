@@ -156,6 +156,7 @@ select{font:inherit; font-size:18px; padding:8px 12px; border:3px solid var(--in
 .icon{width:22px;height:22px}
 
 footer{text-align:center; color:var(--cream); opacity:.85; margin-top:30px; font-size:15px}
+footer a{color:var(--yellow)}
 
 @media (max-width:860px){
   .top{grid-template-columns:1fr 1fr; grid-template-areas:'t t' 'j c'}

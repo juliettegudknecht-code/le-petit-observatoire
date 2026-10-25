@@ -366,7 +366,7 @@
     if (!window.YT || !window.YT.Player) { pendingPlay = true; if (!document.getElementById('ytapi')) { const s = document.createElement('script'); s.id = 'ytapi'; s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s); } $('#nowPlaying').textContent = 'Loading the radio...'; return; }
     const src = custom || window.LPO_STATIONS.find(s => s.id === S.station) || window.LPO_STATIONS[0];
     if (!yt) {
-      yt = new YT.Player('ytPlayer', { width: '100%', height: '100%', playerVars: { rel: 0, modestbranding: 1, playsinline: 1 }, events: {
+      yt = new YT.Player('ytPlayer', { host: 'https://www.youtube-nocookie.com', width: '100%', height: '100%', playerVars: { rel: 0, modestbranding: 1, playsinline: 1 }, events: {
         onReady: () => { ytReady = true; load(src); },
         onStateChange: ev => { const d = yt.getVideoData && yt.getVideoData(); if (d && d.title) $('#nowPlaying').textContent = d.title; $('#radioPlay').textContent = ev.data === 1 ? 'Pause' : 'Lecture'; },
         onError: () => { $('#nowPlaying').textContent = 'That one will not play here, skipping.'; setTimeout(() => yt.nextVideo(), 800); }

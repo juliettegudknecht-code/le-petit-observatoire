@@ -52,8 +52,10 @@ Run `npm run sync` again any time you change the site. The first time Xcode open
    - Screenshots: take them on your phone (side button plus volume up), AirDrop them to the Mac, and upload. You need at least one set for a 6.7 inch or 6.9 inch iPhone. The flashcards, the quiz, and a game screen are good choices.
    - Description: something like "A small French practice app built around flashcards grouped by planet, a ten-question quiz, a verb drill, everyday phrases with French audio, and a few dress-up and shop games starring Cosmo the pug. Content sits around A2 with an easier review setting and a harder stretch setting. Progress is saved on your phone." Keywords: french, flashcards, vocabulary, quiz, verbs, A2.
    - Category: Education. Age rating: answer no to everything, which gives 4+.
-   - Support URL: https://juliettegudknecht-code.github.io/le-petit-observatoire/ works. Privacy policy URL is required. A one-paragraph page saying the app stores progress only on the device and sends nothing to you is enough. I can add that page to the site if you want.
-   - App Privacy: choose Data Not Collected. The app keeps progress in local storage on the phone and you have no server. The translate feature does send the highlighted text to Google Translate and MyMemory, but that is not data you collect, and Apple's form is about you.
+   - Support URL: https://juliettegudknecht-code.github.io/le-petit-observatoire/ works.
+   - Privacy policy URL: https://juliettegudknecht-code.github.io/le-petit-observatoire/privacy.html. That page is in the site now, linked from the footer, and bundled inside the app too.
+   - App Privacy: choose Data Not Collected. The app keeps progress on the phone and you have no server, no analytics and no ads. The translate feature sends only the highlighted text to Google Translate or MyMemory to get an answer back, which Apple treats as processing a request, not collecting. The radio uses YouTube's privacy-enhanced embed, and the privacy page discloses all three.
+   - App Tracking Transparency: not needed. Nothing tracks anyone across apps.
    - Pricing: Free, all countries or just the US.
    - Build: pick the one you uploaded.
 
@@ -65,10 +67,26 @@ Run `npm run sync` again any time you change the site. The first time Xcode open
 
 5. Submit for review. First reviews usually take one to three days.
 
+## Test it through TestFlight before you submit
+
+TestFlight is Apple's way of installing a store build on real phones before it is public. Same upload, different button. Do this at least once because the store build is signed differently from the one Xcode puts on your phone directly.
+
+1. Upload a build exactly as in the section above (Any iOS Device, Product, Archive, Distribute App, App Store Connect, Upload). Wait for the "has completed processing" email.
+2. Install the TestFlight app on your iPhone from the App Store.
+3. In App Store Connect, open the app and click the TestFlight tab. The build appears under iOS Builds. If it shows "Missing Compliance", click it and answer No to the encryption question. The project already declares this in Info.plist, so it should not ask, but if it does, that is the answer.
+4. Internal testing: in the left column under Internal Testing click the plus, name the group anything, and add yourself as a tester (your Apple ID is already a user). Internal testers get the build at once with no review.
+5. Open the email or push notification on your phone, or open TestFlight and sign in, and tap Install. The app installs beside any Xcode copy with the same icon, so delete the Xcode copy first to avoid confusion.
+6. Run through everything: open in airplane mode, a quiz, a verb drill, each game, the speaker button, highlight to translate, the radio, close and reopen for progress, and rotate the phone. Note anything odd and tell me.
+7. Want someone else to try it, like Josh? Add them under External Testing with their email. External builds go through a short Apple review first, usually a day, and they get a TestFlight invite link.
+8. Each new upload needs the build number bumped first, or App Store Connect refuses it. In Xcode, select the App target, General tab, raise Build from 1 to 2 and so on. Version stays 1.0 until you ship a real update.
+9. When a TestFlight build is the one you are happy with, go back to the App Store tab, pick that build in the version page, and submit. No new upload needed.
+
 ## What is where
 
 - `ios-app/capacitor.config.json`: app name, bundle ID, purple background.
 - `ios-app/sync-web.sh`: the copy step. It lists the eight site files it bundles. Add a file there if you add one to the site.
 - `ios-app/ios/App/App/Assets.xcassets`: the 1024 px icon and the purple launch image, both generated from `icon-512.png`.
-- `ios-app/ios/App/App/Info.plist`: display name and orientations. Nothing else needed since the app has no camera, location, or microphone use.
+- `ios-app/ios/App/App/Info.plist`: display name, orientations, and the no-custom-encryption flag. Nothing else needed since the app has no camera, location, or microphone use.
+- `ios-app/ios/App/App/PrivacyInfo.xcprivacy`: Apple's privacy manifest. It says no tracking, no collected data, and declares the one required-reason API Capacitor touches (user defaults, reason CA92.1).
+- `privacy.html` in the site: the privacy policy App Store Connect asks for.
 - `ios-app/www`, `ios-app/node_modules` and `ios-app/ios/App/App/public` are build output and are not committed.
