@@ -140,12 +140,12 @@
 
   // ---------- planets ----------
   function planetSVG(p, i) {
-    return `<svg viewBox="0 0 100 100"><ellipse cx="50" cy="52" rx="46" ry="12" fill="none" stroke="${p.ring}" stroke-width="7" transform="rotate(-18 50 52)"/>
+    return `<svg viewBox="0 0 100 100"><defs><radialGradient id="pg${i}" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="${p.body}" stop-opacity="0"/><stop offset="1" stop-color="#2a1540" stop-opacity=".22"/></radialGradient></defs>
+      <ellipse cx="50" cy="52" rx="46" ry="12" fill="none" stroke="${p.ring}" stroke-width="7" transform="rotate(-18 50 52)" opacity=".9"/>
       <circle cx="50" cy="50" r="30" fill="${p.body}" stroke="#2a1540" stroke-width="3.5"/>
-      <circle cx="${38 + (i % 3) * 6}" cy="42" r="6" fill="${p.spots}"/><circle cx="60" cy="58" r="4" fill="${p.spots}"/><circle cx="44" cy="62" r="2.5" fill="${p.spots}"/>
-      <path d="M4 52 a46 12 0 0 0 92 0" fill="none" stroke="${p.ring}" stroke-width="7" transform="rotate(-18 50 52)" stroke-linecap="round"/>
-      <path d="M43 52 c3 4 11 4 14 0" fill="none" stroke="#2a1540" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="42" cy="46" r="2" fill="#2a1540"/><circle cx="58" cy="46" r="2" fill="#2a1540"/></svg>`;
+      <circle cx="${38 + (i % 3) * 6}" cy="42" r="6" fill="${p.spots}" opacity=".8"/><circle cx="60" cy="58" r="4" fill="${p.spots}" opacity=".8"/><circle cx="44" cy="62" r="2.5" fill="${p.spots}" opacity=".8"/>
+      <circle cx="50" cy="50" r="30" fill="url(#pg${i})"/>
+      <path d="M4 52 a46 12 0 0 0 92 0" fill="none" stroke="${p.ring}" stroke-width="7" transform="rotate(-18 50 52)" stroke-linecap="round"/></svg>`;
   }
   function planetsHTML(sel, withAll) {
     let h = DECKS.map((d, i) => `<button class="planet ${sel === d.id ? 'on' : ''}" data-deck="${d.id}">${planetSVG(d.planet, i)}${esc(d.name)}<span class="sub">${esc(d.en)}</span></button>`).join('');

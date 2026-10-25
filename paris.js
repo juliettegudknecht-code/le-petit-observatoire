@@ -22,7 +22,7 @@
   // puffy cartoon clouds and a Paris rooftop skyline for the pastel sky
   function clouds() {
     const cloud = '<svg viewBox="0 0 180 110"><path d="M34 92 C14 92 8 72 20 62 C8 44 30 30 46 40 C52 16 90 12 102 36 C122 26 146 40 140 60 C166 58 172 92 148 92 Z" fill="#fff" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/><circle cx="60" cy="58" r="6" fill="#ffd4ea"/><circle cx="110" cy="52" r="5" fill="#ead6ff"/></svg>';
-    return [0, 1, 2, 3, 4].map(k => `<span class="cloud" style="top:${(4 + seed(k + 41) * 40).toFixed(1)}%;animation-duration:${(70 + seed(k + 43) * 60).toFixed(0)}s;animation-delay:${(-seed(k + 47) * 120).toFixed(0)}s;scale:${(.6 + seed(k + 53) * .7).toFixed(2)}">${cloud}</span>`).join('');
+    return [0, 1, 2].map(k => `<span class="cloud" style="top:${(4 + seed(k + 41) * 40).toFixed(1)}%;animation-duration:${(70 + seed(k + 43) * 60).toFixed(0)}s;animation-delay:${(-seed(k + 47) * 120).toFixed(0)}s;scale:${(.6 + seed(k + 53) * .7).toFixed(2)}">${cloud}</span>`).join('');
   }
   function skyline() {
     const INK = '#2a1540', fills = ['#cdb6ff', '#ffc2e2', '#fff1d6', '#e6d9ff', '#ffd9c7'];
@@ -42,24 +42,9 @@
   // things drifting in the sky, behind everything
   const sky = document.createElement('div'); sky.className = 'parisSky'; sky.setAttribute('aria-hidden', 'true');
   const drift = ['macaron', 'beret', 'perfume', 'heart', 'croissant', 'lipstick', 'glasses', 'heel', 'bag', 'macaron', 'heart'];
-  sky.innerHTML = drift.map((id, k) => `<span class="drift" style="left:${(4 + seed(k + 11) * 92).toFixed(1)}%;top:${(6 + seed(k + 77) * 84).toFixed(1)}%;animation-duration:${(9 + seed(k + 5) * 8).toFixed(1)}s;animation-delay:${(-seed(k + 9) * 10).toFixed(1)}s;transform:rotate(${(seed(k + 3) * 40 - 20).toFixed(0)}deg)">${svg(id)}</span>`).join('')
-    + `<span class="eiffel">${svg('eiffel')}</span>` + clouds() + skyline();
+  sky.innerHTML = clouds() + skyline();
   document.body.insertBefore(sky, document.body.firstChild);
 
-  // a beret on the title
-  const h1 = document.querySelector('.title h1');
-  if (h1) h1.insertAdjacentHTML('afterbegin', `<span class="titlehat">${svg('beret')}</span>`);
-
-  // a sticker in the corner of every panel
-  const stickers = ['macaron', 'beret', 'perfume', 'heart', 'bag', 'lipstick', 'croissant', 'heel', 'glasses'];
-  function decorate() {
-    document.querySelectorAll('.panel').forEach((p, k) => {
-      if (p.querySelector(':scope > .sticker')) return;
-      p.insertAdjacentHTML('afterbegin', `<span class="sticker" style="transform:rotate(${(seed(k + 21) * 30 - 15).toFixed(0)}deg)">${svg(stickers[k % stickers.length])}</span>`);
-    });
-  }
-  decorate();
-  new MutationObserver(decorate).observe(document.querySelector('main') || document.body, { childList: true, subtree: true });
 
   // a tiny Eiffel tower in the footer
   const foot = document.querySelector('footer');
@@ -67,7 +52,7 @@
 
   // stars that fly to the badge are sometimes something sweeter
   const STAR = '<svg viewBox="0 0 100 100"><path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z" fill="#ffd98a" stroke="#2a1540" stroke-width="6" stroke-linejoin="round"/></svg>';
-  if (window.LPO) window.LPO.flyIcon = () => { const r = Math.random(); return r < .6 ? STAR : svg(r < .75 ? 'macaron' : r < .9 ? 'heart' : 'beret'); };
+  if (window.LPO) window.LPO.flyIcon = () => { const r = Math.random(); return r < .8 ? STAR : svg('heart'); };
 
   // more things for them to say
   if (window.LPO_COSMO_SAYS) window.LPO_COSMO_SAYS.push('Mon béret est de travers ?', 'Un macaron, vite.', 'Je suis très chic.', 'Rue Cambon, s’il vous plaît.', 'Pas de talons pour moi.');

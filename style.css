@@ -320,3 +320,11 @@ footer{display:inline-block; position:relative; left:50%; transform:translateX(-
 }
 @media (min-width:1100px) and (max-height:760px){ .side .char{width:112px} .side .tab{font-size:18px; padding:7px 16px} }
 @media (min-width:1100px){ .kbd-hint{background:var(--cream); border:3px solid var(--ink); border-radius:14px; padding:8px 12px; box-shadow:4px 4px 0 var(--ink); opacity:1; margin:14px 6px 0} }
+
+/* calmer pass: no tilts, fewer decorations, softer sky */
+.tab,.tab:nth-child(even),.tab.on,.planet,.planet:nth-child(even),.side .tab,.side .tab:nth-child(even){rotate:0deg}
+.btn:hover{transform:translate(-1px,-1px)}
+.cloud{opacity:.85}
+.skyline{opacity:.72}
+.blob{opacity:.22}
+.sticker,.titlehat,.drift{display:none}
