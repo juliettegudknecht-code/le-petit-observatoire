@@ -46,6 +46,26 @@
   document.body.insertBefore(sky, document.body.firstChild);
 
 
+
+  // retro-futuristic logo: orbit ring with a little planet circling the title, sunset stripes behind it
+  const h1 = document.querySelector('.title h1');
+  if (h1) {
+    const logo = document.createElement('div'); logo.className = 'logo';
+    h1.parentNode.insertBefore(logo, h1); logo.appendChild(h1);
+    logo.insertAdjacentHTML('afterbegin', `<svg class="logo-back" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="lgs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7ac6"/><stop offset="1" stop-color="#b48cff"/></linearGradient></defs>
+      <g opacity=".45" fill="url(#lgs)"><rect x="40" y="118" width="520" height="10" rx="5"/><rect x="90" y="138" width="420" height="8" rx="4"/><rect x="150" y="156" width="300" height="6" rx="3"/></g>
+      <ellipse cx="300" cy="100" rx="290" ry="74" fill="none" stroke="#fff" stroke-width="5" opacity=".8" transform="rotate(-6 300 100)"/>
+      <ellipse cx="300" cy="100" rx="290" ry="74" fill="none" stroke="#2a1540" stroke-width="2" opacity=".35" transform="rotate(-6 300 100)"/>
+    </svg>`);
+    logo.insertAdjacentHTML('beforeend', `<svg class="logo-front" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+      <path id="orbitpath" d="M10 130 A290 74 -6 0 1 590 70" fill="none"/>
+      <g><circle r="11" fill="#ffd98a" stroke="#2a1540" stroke-width="3"/><ellipse rx="19" ry="5" fill="none" stroke="#ff7ac6" stroke-width="3" transform="rotate(-18)"/>
+        <animateMotion dur="9s" repeatCount="indefinite" rotate="0"><mpath href="#orbitpath"/></animateMotion></g>
+      <g><circle r="3" fill="#fff"/><animateMotion dur="9s" begin="-4.5s" repeatCount="indefinite"><mpath href="#orbitpath"/></animateMotion></g>
+    </svg>`);
+  }
+
   // a tiny Eiffel tower in the footer
   const foot = document.querySelector('footer');
   if (foot) foot.insertAdjacentHTML('afterbegin', `<span class="footicon">${svg('eiffel')}</span>`);

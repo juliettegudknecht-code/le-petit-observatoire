@@ -377,3 +377,27 @@ footer{display:inline-block; position:relative; left:50%; transform:translateX(-
 .bar .fill{display:block; height:100%; border-radius:8px; min-width:4px; transition:width .5s}
 .bar small{text-align:right; opacity:.7}
 @media (max-width:520px){.bar{grid-template-columns:90px 1fr 60px; font-size:14px} .pnode{width:120px}}
+
+/* retro-futuristic type: Righteous for titles, Comfortaa for buttons and labels, Nunito body */
+h1,h2,h3{font-family:'Righteous','Comfortaa','Nunito',sans-serif; font-weight:400; letter-spacing:.5px}
+.fr,.word,.tr-pop .tr-fr,.plabel b,.memfront,.phrase .fr,.q .fr{font-family:'Comfortaa','Nunito',sans-serif; font-weight:700}
+.btn,.tab,.chip,.starbadge,.bubble,.combo,.pstart,.shopitem .tag,.reminderRow input[type=time],.kbd-hint kbd{font-family:'Comfortaa','Nunito',sans-serif; font-weight:700; letter-spacing:.3px}
+.tab{font-size:17px} .btn{font-size:16px} .btn.sm{font-size:14px}
+.title h1{font-family:'Righteous',sans-serif; letter-spacing:1px; color:#fff; background:linear-gradient(180deg,#fff 0%,#ffd1ea 45%,#ff7ac6 50%,#ffe9f4 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; text-shadow:none; filter:drop-shadow(0 4px 0 #b05bd6) drop-shadow(0 8px 0 rgba(42,21,64,.15))}
+.title p{font-family:'Comfortaa',sans-serif; font-weight:700; letter-spacing:.6px; font-size:16px}
+h2{letter-spacing:.6px}
+.planet{font-family:'Comfortaa',sans-serif; font-weight:700; font-size:16px}
+.orbit .track{background:linear-gradient(90deg,#efe6ff,#ffd9ee)}
+.pball{background-image:radial-gradient(circle at 35% 30%, rgba(255,255,255,.55), transparent 55%)}
+@media (min-width:1100px){ .side .title h1{font-size:34px} }
+
+/* retro logo */
+.logo{position:relative; display:inline-block; padding:22px 44px 26px}
+.logo h1{position:relative; z-index:1; transform:skewX(-6deg); display:inline-block}
+.logo-back,.logo-front{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:visible}
+.logo-front{z-index:2}
+.title h1{font-size:clamp(34px,6vw,58px)}
+@media (max-width:640px){.logo{padding:16px 26px 20px}}
+@media (min-width:1100px){.side .logo{padding:16px 22px 18px}}
+.title h1{background:linear-gradient(180deg,#fff 0%,#ffe1f1 40%,#ff6fbf 52%,#ffd0e8 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; -webkit-text-stroke:1.2px #4a2a7a; filter:drop-shadow(0 5px 0 #8a4fc9) drop-shadow(0 9px 0 rgba(42,21,64,.18))}
+.logo-back ellipse{stroke:#fff}
