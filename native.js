@@ -1,8 +1,28 @@
 // Native extras for the iPhone app (Capacitor). Does nothing on the plain website.
 (() => {
   const C = window.Capacitor;
-  if (!C || !C.isNativePlatform || !C.isNativePlatform()) return;
+  const isNative = !!(C && C.isNativePlatform && C.isNativePlatform());
+  const standalone = window.matchMedia && (matchMedia('(display-mode: standalone)').matches || navigator.standalone);
+  if (!isNative && !standalone) return;
   document.body.classList.add('native');
+
+  // app chrome: icons in the tab bar, a compact top bar on inner screens, the big header on Accueil only
+  const ICONS = {
+    home: '<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg>',
+    cards: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="16" rx="2.5" fill="currentColor"/><rect x="9" y="2.5" width="12" height="15" rx="2.5" fill="currentColor" opacity=".5"/></svg>',
+    quiz: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="currentColor"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.2" fill="#fff"/></svg>',
+    verbs: '<svg viewBox="0 0 24 24"><path d="M4 5h16M4 10h10M4 15h16M4 20h8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>',
+    phrases: '<svg viewBox="0 0 24 24"><path d="M4 4h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4v-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="currentColor"/></svg>',
+    games: '<svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="11" rx="5.5" fill="currentColor"/><path d="M7 10.5v4M5 12.5h4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="11.5" r="1.3" fill="#fff"/><circle cx="18.5" cy="14" r="1.3" fill="#fff"/></svg>'
+  };
+  document.querySelectorAll('.tab').forEach(t => { const v = t.dataset.view; if (ICONS[v]) t.insertAdjacentHTML('afterbegin', ICONS[v]); });
+  const bar = document.createElement('div'); bar.className = 'appbar'; bar.innerHTML = '<span class="appbar-title"></span>';
+  document.body.appendChild(bar);
+  const titleOf = () => { const t = document.querySelector('.tab.on'); return t ? t.textContent.trim() : ''; };
+  const syncView = () => { const t = document.querySelector('.tab.on'); const home = !t || t.dataset.view === 'home'; document.body.classList.toggle('home', home); bar.querySelector('.appbar-title').textContent = home ? '' : titleOf(); };
+  new MutationObserver(syncView).observe(document.getElementById('tabs'), { attributes: true, subtree: true, attributeFilter: ['class'] });
+  syncView();
+  if (!isNative) return;
   const plugin = name => { try { return C.registerPlugin(name); } catch (e) { return null; } };
   const Haptics = plugin('Haptics'), StatusBar = plugin('StatusBar'), Notes = plugin('LocalNotifications');
   const quiet = p => { if (p && p.catch) p.catch(() => {}); };
