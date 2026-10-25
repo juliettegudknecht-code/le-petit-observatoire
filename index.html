@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Petit Observatoire</title>
+<meta name="description" content="French practice for Juliette and Cosmo, somewhere above Florida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z' fill='%23ffd98a' stroke='%232a1540' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<svg id="sky" aria-hidden="true"></svg>
+<div class="blob a"></div><div class="blob b"></div><div class="blob c"></div>
+
+<div class="wrap">
+<header class="top">
+  <button class="char j" id="charJ" aria-label="Juliette">
+    <span class="bubble" id="bubbleJ"></span>
+    <svg viewBox="0 0 200 270" xmlns="http://www.w3.org/2000/svg">
+      <!-- hair back -->
+      <path d="M52 110 C40 150 44 200 58 236 L142 236 C156 200 160 150 148 110 Z" fill="#2b1b2e" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <!-- suit body -->
+      <path d="M62 160 C60 196 60 222 66 244 L134 244 C140 222 140 196 138 160 C128 150 72 150 62 160 Z" fill="#cdb6ff" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="84" y="178" width="32" height="26" rx="6" fill="#ff7ac6" stroke="#2a1540" stroke-width="3"/>
+      <circle cx="92" cy="186" r="3" fill="#2a1540"/><circle cx="108" cy="186" r="3" fill="#2a1540"/>
+      <path d="M90 197 h20" stroke="#2a1540" stroke-width="3" stroke-linecap="round"/>
+      <!-- left arm (viewer left) down -->
+      <path d="M66 166 C48 180 40 200 42 224" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
+      <path d="M66 166 C50 182 44 200 46 224 L58 226 C58 204 62 190 74 176 Z" fill="#cdb6ff" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="50" cy="232" r="9" fill="#f6dcc8" stroke="#2a1540" stroke-width="4"/>
+      <!-- right arm raised with wine glass -->
+      <path d="M134 166 C152 160 164 150 168 132 L156 128 C152 142 144 150 130 156 Z" fill="#cdb6ff" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="166" cy="122" r="9" fill="#f6dcc8" stroke="#2a1540" stroke-width="4"/>
+      <path d="M160 112 L166 92 M156 92 h20" stroke="#2a1540" stroke-width="3" stroke-linecap="round"/>
+      <path d="M152 92 C150 80 154 68 158 60 L176 60 C180 68 184 80 182 92 Z" fill="#fff" fill-opacity=".7" stroke="#2a1540" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M153 86 C152 78 154 72 157 68 L177 68 C180 72 182 78 181 86 Z" fill="#8a2a4a"/>
+      <!-- collar ring -->
+      <ellipse cx="100" cy="156" rx="34" ry="9" fill="#dcd6ea" stroke="#2a1540" stroke-width="4"/>
+      <!-- neck -->
+      <rect x="90" y="140" width="20" height="14" fill="#f6dcc8" stroke="#2a1540" stroke-width="3"/>
+      <!-- face -->
+      <circle cx="100" cy="104" r="46" fill="#f6dcc8" stroke="#2a1540" stroke-width="4"/>
+      <!-- hair front -->
+      <path d="M56 100 C56 70 74 54 100 54 C126 54 144 70 144 100 C136 86 126 80 112 82 C100 70 82 72 70 86 C62 90 58 96 56 100 Z" fill="#2b1b2e" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M58 104 C50 130 50 160 56 190" fill="none" stroke="#2b1b2e" stroke-width="12" stroke-linecap="round"/>
+      <path d="M142 104 C150 130 150 160 144 190" fill="none" stroke="#2b1b2e" stroke-width="12" stroke-linecap="round"/>
+      <!-- beret -->
+      <path d="M50 76 C44 54 70 36 104 38 C136 40 158 54 152 74 C140 66 118 62 100 64 C80 66 62 70 50 76 Z" fill="#e03a3a" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M104 38 C106 32 110 30 114 32" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
+      <!-- eyes with pink shadow -->
+      <path d="M72 96 C78 88 90 88 94 96" fill="none" stroke="#ff7ac6" stroke-width="5" stroke-linecap="round"/>
+      <path d="M106 96 C110 88 122 88 128 96" fill="none" stroke="#ff7ac6" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="83" cy="104" rx="9" ry="10" fill="#fff" stroke="#2a1540" stroke-width="3"/>
+      <ellipse cx="117" cy="104" rx="9" ry="10" fill="#fff" stroke="#2a1540" stroke-width="3"/>
+      <circle cx="84" cy="105" r="5" fill="#7f9a8a"/><circle cx="118" cy="105" r="5" fill="#7f9a8a"/>
+      <circle cx="84" cy="105" r="2.5" fill="#2a1540"/><circle cx="118" cy="105" r="2.5" fill="#2a1540"/>
+      <circle cx="86" cy="102" r="1.6" fill="#fff"/><circle cx="120" cy="102" r="1.6" fill="#fff"/>
+      <path d="M72 100 l-4 -3 M128 100 l4 -3" stroke="#2a1540" stroke-width="3" stroke-linecap="round"/>
+      <!-- blush, nose, smile -->
+      <ellipse cx="70" cy="118" rx="7" ry="4" fill="#ffb6c6"/><ellipse cx="130" cy="118" rx="7" ry="4" fill="#ffb6c6"/>
+      <path d="M100 110 c-2 6 -1 10 3 10" fill="none" stroke="#2a1540" stroke-width="3" stroke-linecap="round"/>
+      <path d="M90 128 C96 134 106 134 112 128" fill="none" stroke="#2a1540" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <div class="title">
+    <h1>Le Petit Observatoire</h1>
+    <p>French practice for Juliette and Cosmo, somewhere above Florida.</p>
+    <div class="starbadge" id="starBadge" title="Stars you have earned">
+      <svg viewBox="0 0 100 100"><path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z" fill="#ffd98a" stroke="#2a1540" stroke-width="6" stroke-linejoin="round"/></svg>
+      <span id="starCount">0</span>
+    </div>
+  </div>
+
+  <button class="char c" id="charC" aria-label="Cosmo">
+    <span class="bubble" id="bubbleC"></span>
+    <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
+      <!-- helmet antenna -->
+      <path d="M100 26 v-14" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="100" cy="10" r="7" fill="#ff7ac6" stroke="#2a1540" stroke-width="3"/>
+      <!-- body -->
+      <path d="M58 150 C50 180 56 210 72 216 L128 216 C144 210 150 180 142 150 Z" fill="#e9c79b" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <!-- tail curl -->
+      <path d="M142 160 c14 -4 22 6 14 16 c-6 8 -16 4 -12 -4" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
+      <path d="M142 160 c14 -4 22 6 14 16 c-6 8 -16 4 -12 -4" fill="none" stroke="#e9c79b" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+      <!-- paws -->
+      <ellipse cx="80" cy="216" rx="16" ry="9" fill="#e9c79b" stroke="#2a1540" stroke-width="4"/>
+      <ellipse cx="120" cy="216" rx="16" ry="9" fill="#e9c79b" stroke="#2a1540" stroke-width="4"/>
+      <path d="M74 218 v5 M80 219 v6 M86 218 v5 M114 218 v5 M120 219 v6 M126 218 v5" stroke="#2a1540" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- collar -->
+      <path d="M62 150 C80 160 120 160 138 150" fill="none" stroke="#8f63e6" stroke-width="9" stroke-linecap="round"/>
+      <path d="M62 150 C80 160 120 160 138 150" fill="none" stroke="#2a1540" stroke-width="2"/>
+      <circle cx="100" cy="162" r="6" fill="#ffd98a" stroke="#2a1540" stroke-width="3"/>
+      <!-- helmet glass -->
+      <circle cx="100" cy="94" r="68" fill="#bfe9ff" fill-opacity=".35" stroke="#2a1540" stroke-width="4"/>
+      <!-- head -->
+      <circle cx="100" cy="96" r="48" fill="#e9c79b" stroke="#2a1540" stroke-width="4"/>
+      <!-- ears -->
+      <path d="M58 76 C48 90 52 108 62 116 C70 104 72 90 72 78 Z" fill="#3a2a24" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M142 76 C152 90 148 108 138 116 C130 104 128 90 128 78 Z" fill="#3a2a24" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <!-- wrinkles -->
+      <path d="M82 66 C92 60 108 60 118 66 M86 58 C94 54 106 54 114 58" fill="none" stroke="#2a1540" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+      <!-- mask -->
+      <ellipse cx="100" cy="116" rx="30" ry="22" fill="#3a2a24"/>
+      <!-- eyes -->
+      <circle cx="78" cy="96" r="13" fill="#fff" stroke="#2a1540" stroke-width="3"/>
+      <circle cx="122" cy="96" r="13" fill="#fff" stroke="#2a1540" stroke-width="3"/>
+      <circle cx="80" cy="98" r="8.5" fill="#2a1540"/><circle cx="120" cy="98" r="8.5" fill="#2a1540"/>
+      <circle cx="83" cy="94" r="3" fill="#fff"/><circle cx="123" cy="94" r="3" fill="#fff"/>
+      <!-- nose and mouth -->
+      <ellipse cx="100" cy="110" rx="9" ry="6" fill="#120a0a" stroke="#2a1540" stroke-width="2"/>
+      <path d="M100 116 v8 M88 126 C94 132 106 132 112 126" fill="none" stroke="#2a1540" stroke-width="3" stroke-linecap="round"/>
+      <path d="M94 128 c2 8 10 8 12 0 z" fill="#ff8fb4" stroke="#2a1540" stroke-width="2"/>
+      <!-- helmet shine -->
+      <path d="M48 70 C54 50 68 38 86 32" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".8"/>
+      <!-- helmet ring -->
+      <ellipse cx="100" cy="156" rx="40" ry="8" fill="#dcd6ea" stroke="#2a1540" stroke-width="4"/>
+    </svg>
+  </button>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab on" data-view="home">Accueil</button>
+  <button class="tab" data-view="cards">Cartes</button>
+  <button class="tab" data-view="quiz">Quiz</button>
+  <button class="tab" data-view="verbs">Verbes</button>
+  <button class="tab" data-view="phrases">Phrases</button>
+</nav>
+
+<main>
+<section id="view-home">
+  <div class="panel">
+    <h2 id="greeting">Bonjour, Juliette.</h2>
+    <p class="big" id="dateLine"></p>
+    <p id="starLine"></p>
+    <div class="row" style="margin-top:14px">
+      <button class="btn pink" data-go="quiz">Dix questions</button>
+      <button class="btn lilac" data-go="cards">Les cartes</button>
+      <button class="btn blue" data-go="verbs">Un verbe</button>
+    </div>
+  </div>
+  <div class="cols">
+    <div class="panel pink">
+      <h2>Le mot du jour</h2>
+      <div class="row"><span class="word" id="wodFr"></span><button class="speak" id="wodSpeak" aria-label="Écouter"><svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#2a1540"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="#2a1540" stroke-width="2.2" stroke-linecap="round"/></svg></button></div>
+      <p class="big" id="wodEn"></p>
+      <p class="ex" id="wodEx"></p>
+    </div>
+    <div class="panel soft">
+      <h2>Ton niveau</h2>
+      <div class="levels" id="levels">
+        <button class="btn plain" data-lvl="1">Révision (A1)</button>
+        <button class="btn plain" data-lvl="2">Juste bien (A2)</button>
+        <button class="btn plain" data-lvl="3">Un cran au-dessus (B1)</button>
+      </div>
+      <p class="small" style="margin-top:12px">Duolingo level 27 lands around A2, so Juste bien is the default. Nudge it if things feel too easy or too hard. Tap Cosmo or Juliette up top whenever you want a word of encouragement, and the radio in the corner has Indila on station one.</p>
+    </div>
+  </div>
+  <div class="panel" id="progressPanel"></div>
+</section>
+
+<section id="view-cards" hidden>
+  <div class="panel">
+    <h2>Quelle planète aujourd'hui ?</h2>
+    <div class="planets" id="deckPlanets"></div>
+  </div>
+  <div id="cardArea"></div>
+</section>
+
+<section id="view-quiz" hidden>
+  <div id="quizArea"></div>
+</section>
+
+<section id="view-verbs" hidden>
+  <div class="panel">
+    <h2>Conjugue-moi ça</h2>
+    <div class="row">
+      <select id="verbSel"></select>
+      <select id="tenseSel">
+        <option value="pres">présent</option>
+        <option value="pc">passé composé</option>
+        <option value="imp">imparfait</option>
+        <option value="fp">futur proche</option>
+      </select>
+      <button class="btn sm plain" id="verbTable">Voir le tableau</button>
+    </div>
+    <div id="verbArea" style="margin-top:18px"></div>
+    <div id="verbTableArea" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<section id="view-phrases" hidden>
+  <div class="panel">
+    <h2>Des trucs que tu dis vraiment</h2>
+    <div class="row" style="margin-bottom:8px">
+      <button class="btn sm plain" id="toggleEn">Cacher l'anglais</button>
+      <button class="btn sm plain" id="challengeMode">Mode défi</button>
+      <button class="btn sm plain" id="shufflePhrases">Mélanger</button>
+    </div>
+    <div id="phraseList"></div>
+  </div>
+</section>
+</main>
+
+<footer>Fait avec amour pour Juliette et Cosmo. Progress lives in this browser only.</footer>
+</div>
+
+<aside class="radio min" id="radio">
+  <div class="bar">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M9 18V6l10-2v12" fill="none" stroke="#2a1540" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.6" fill="#ff7ac6" stroke="#2a1540" stroke-width="2.2"/><circle cx="16.5" cy="16" r="2.6" fill="#ffd98a" stroke="#2a1540" stroke-width="2.2"/></svg>
+    <span>Radio</span>
+    <span class="np" id="nowPlaying">Indila is waiting on station one.</span>
+    <button class="btn sm plain" id="radioPlay">Lecture</button>
+    <button class="btn sm plain" id="radioToggle" aria-label="Ouvrir ou réduire">+</button>
+  </div>
+  <div class="body">
+    <div class="stations" id="stations"></div>
+    <div class="yt" id="yt"><div id="ytPlayer"></div></div>
+    <form class="custom" id="customForm">
+      <input type="text" id="customUrl" placeholder="Paste any YouTube link or playlist">
+      <button class="btn sm lilac" type="submit">Go</button>
+    </form>
+  </div>
+</aside>
+
+<script src="data.js?v=1"></script>
+<script src="app.js?v=1"></script>
+</body>
+</html>
