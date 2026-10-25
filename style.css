@@ -214,3 +214,55 @@ body.native .radio{padding-bottom:env(safe-area-inset-bottom)}
 
 .langbtn{margin:12px 0 0 12px; vertical-align:bottom; color:var(--ink); background:var(--yellow)}
 .en-mode .ex .en, .en-mode .phrase .en{display:none}
+
+/* interactive extras */
+.confetti{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:60}
+.combo{position:absolute; top:-14px; right:18px; background:var(--yellow); border:3px solid var(--ink); border-radius:14px; padding:2px 14px; font-family:'Fredoka',sans-serif; font-size:24px; box-shadow:4px 4px 0 var(--ink); transform:rotate(6deg)}
+.combo.pop{animation:pop .4s}
+@keyframes pop{0%{transform:rotate(6deg) scale(.6)}60%{transform:rotate(-4deg) scale(1.25)}100%{transform:rotate(6deg) scale(1)}}
+#quizArea .panel{position:relative}
+.card.dragging{transition:none; cursor:grabbing}
+.scene{position:relative; touch-action:pan-y}
+.swipebadge{position:absolute; top:16px; left:50%; transform:translateX(-50%) rotate(-6deg); font-family:'Fredoka',sans-serif; font-size:26px; border:3px solid var(--ink); border-radius:12px; padding:4px 16px; opacity:0; pointer-events:none; z-index:2; box-shadow:4px 4px 0 var(--ink)}
+.swipebadge.yes{background:var(--good)} .swipebadge.no{background:var(--bad)}
+.buildline{min-height:64px; background:#fff; border:3px dashed var(--ink); border-radius:14px; padding:10px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:10px 0 14px}
+.buildline .placeholder{opacity:.45; font-size:18px}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{background:var(--yellow); border:3px solid var(--ink); border-radius:12px; padding:7px 14px; font-family:'Fredoka',sans-serif; font-size:20px; box-shadow:3px 3px 0 var(--ink); transition:transform .08s}
+.chip:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink)}
+.chip:disabled{opacity:.25; box-shadow:none}
+.chip.in{background:var(--lilac2)} .chip.right{background:var(--good)} .chip.wrong{background:var(--bad)}
+.memgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+@media (max-width:520px){.memgrid{grid-template-columns:repeat(3,1fr)}}
+.mem{position:relative; aspect-ratio:4/3; background:none; border:0; padding:0; perspective:800px}
+.memface{position:absolute; inset:0; border:3px solid var(--ink); border-radius:12px; backface-visibility:hidden; transition:transform .45s; display:flex; align-items:center; justify-content:center; padding:6px; text-align:center; font-size:15px; line-height:1.2; box-shadow:3px 3px 0 var(--ink)}
+.memback{background:var(--lilac); background-image:radial-gradient(circle at 30% 30%, #fff8 0 6px, transparent 7px), radial-gradient(circle at 70% 65%, #fff6 0 4px, transparent 5px)}
+.memfront{transform:rotateY(180deg); background:#fff; font-family:'Fredoka',sans-serif}
+.memfront.en{background:var(--pink2); font-family:'Nunito',sans-serif}
+.mem.up .memback{transform:rotateY(180deg)} .mem.up .memfront{transform:rotateY(0)}
+.mem.done .memfront{background:var(--good)}
+.mem.nope .memfront{animation:shake .4s}
+
+[hidden]{display:none !important}
+
+/* Paris fashion touches (paris.js) */
+.parisSky{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+.drift{position:absolute; width:44px; height:44px; opacity:.5; animation:floaty 12s ease-in-out infinite alternate}
+.drift svg{width:100%; height:100%; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.25))}
+@keyframes floaty{from{margin-top:0; margin-left:0}to{margin-top:-26px; margin-left:14px}}
+.eiffel{position:absolute; bottom:-10px; left:50%; width:220px; height:220px; margin-left:-110px; opacity:.16}
+.eiffel svg{width:100%; height:100%}
+.titlehat{position:absolute; left:-10px; top:-26px; width:52px; height:52px; transform:rotate(-16deg); filter:drop-shadow(3px 3px 0 rgba(0,0,0,.3))}
+.title h1{position:relative; display:inline-block}
+.titlehat svg{width:100%; height:100%}
+.panel{position:relative}
+.sticker{position:absolute; top:-16px; right:14px; width:44px; height:44px; pointer-events:none; filter:drop-shadow(3px 3px 0 rgba(0,0,0,.2))}
+.sticker svg{width:100%; height:100%}
+.combo{right:auto; left:18px; transform:rotate(-6deg)}
+.footicon{display:inline-block; width:22px; height:22px; vertical-align:-5px; margin-right:6px}
+.footicon svg{width:100%; height:100%}
+.memback{background-color:var(--lilac); background-image:repeating-linear-gradient(45deg, transparent 0 11px, rgba(255,255,255,.35) 11px 13px), repeating-linear-gradient(-45deg, transparent 0 11px, rgba(255,255,255,.35) 11px 13px)}
+.memback::after{content:''; position:absolute; left:50%; top:50%; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:#d4af37; border:2px solid var(--ink)}
+.chip{position:relative; padding-left:22px}
+.chip::before{content:''; position:absolute; left:8px; top:50%; width:7px; height:7px; margin-top:-5px; border-radius:50%; background:#fff; border:2px solid var(--ink)}
+@media (max-width:600px){.drift{width:32px;height:32px} .sticker{width:34px;height:34px;top:-12px;right:10px} .titlehat{width:40px;height:40px;top:-20px;left:-6px} .eiffel{width:150px;height:150px;margin-left:-75px}}

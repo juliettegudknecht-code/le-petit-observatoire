@@ -1,0 +1,54 @@
+// Little Paris fashion cartoon touches: stickers on the panels, things drifting in the sky,
+// a beret on the title, extra lines for Cosmo and Juliette. Pure decoration, loaded last.
+(function () {
+  'use strict';
+  const INK = '#2a1540';
+  const I = {
+    beret: `<path d="M14 58 C10 36 36 22 54 24 C76 26 92 38 86 58 C70 50 36 50 14 58Z" fill="#e03a3a" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M16 58 C40 66 70 66 86 58" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/><path d="M54 24 c2 -7 7 -9 12 -7" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>`,
+    macaron: `<path d="M18 44 C18 28 82 28 82 44 C82 52 18 52 18 44Z" fill="#ff7ac6" stroke="${INK}" stroke-width="4"/><path d="M20 50 h60 v8 h-60z" fill="#fff6fb" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M18 60 C18 76 82 76 82 60 C82 54 18 54 18 60Z" fill="#ff7ac6" stroke="${INK}" stroke-width="4"/><circle cx="36" cy="38" r="3" fill="#fff" opacity=".8"/>`,
+    perfume: `<rect x="40" y="10" width="20" height="14" rx="3" fill="#ffd98a" stroke="${INK}" stroke-width="4"/><rect x="24" y="24" width="52" height="64" rx="8" fill="#fff6fb" stroke="${INK}" stroke-width="4"/><rect x="34" y="42" width="32" height="26" fill="#fff" stroke="${INK}" stroke-width="3"/><text x="50" y="60" text-anchor="middle" font-family="Fredoka,Nunito,sans-serif" font-size="13" font-weight="700" fill="${INK}">No 5</text><path d="M30 30 v50" stroke="#fff" stroke-width="4" opacity=".8" stroke-linecap="round"/>`,
+    bag: `<path d="M34 36 C30 18 70 18 66 36" fill="none" stroke="#d4af37" stroke-width="4" stroke-dasharray="4 4" stroke-linecap="round"/><rect x="16" y="36" width="68" height="48" rx="10" fill="${INK}"/><path d="M18 48 l64 26 M18 72 l64 -26 M34 38 v44 M50 38 v44 M66 38 v44" stroke="#6b4d8f" stroke-width="2"/><path d="M42 60 h16 M50 52 v16" stroke="#d4af37" stroke-width="4" stroke-linecap="round"/>`,
+    lipstick: `<rect x="36" y="50" width="28" height="40" rx="5" fill="${INK}"/><rect x="40" y="38" width="20" height="14" fill="#ffd98a" stroke="${INK}" stroke-width="3"/><path d="M42 40 V22 C42 14 58 10 58 20 V40Z" fill="#ff4f8b" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/>`,
+    croissant: `<path d="M18 62 C14 42 30 28 50 28 C70 28 86 42 82 62 C76 54 66 50 50 50 C34 50 24 54 18 62Z" fill="#f0b25a" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M34 32 C30 40 30 48 34 54 M66 32 C70 40 70 48 66 54 M50 29 v22" fill="none" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>`,
+    eiffel: `<path d="M50 6 L58 46 C60 58 66 70 80 92 L62 92 C58 82 54 78 50 78 C46 78 42 82 38 92 L20 92 C34 70 40 58 42 46 Z" fill="#b48cff" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M40 52 h20 M34 70 h32" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>`,
+    heart: `<path d="M50 86 C20 64 10 48 16 32 C22 16 44 16 50 32 C56 16 78 16 84 32 C90 48 80 64 50 86Z" fill="#ff7ac6" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><circle cx="34" cy="34" r="4" fill="#fff" opacity=".8"/>`,
+    heel: `<path d="M14 70 C30 60 50 56 70 36 L86 40 C80 54 66 64 48 70 L48 86 L38 86 L36 72 C28 74 22 76 14 78Z" fill="#ff4f8b" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M70 36 c6 -8 12 -8 16 4" fill="none" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>`,
+    glasses: `<rect x="6" y="36" width="38" height="26" rx="12" fill="${INK}"/><rect x="56" y="36" width="38" height="26" rx="12" fill="${INK}"/><path d="M44 46 h12" stroke="${INK}" stroke-width="5"/><path d="M14 42 h10 M64 42 h10" stroke="#fff" stroke-width="3" opacity=".7" stroke-linecap="round"/>`
+  };
+  const svg = (id, cls) => `<svg viewBox="0 0 100 100" class="${cls || ''}" aria-hidden="true">${I[id]}</svg>`;
+  const seed = n => { const x = Math.sin(n * 9301 + 49297) * 233280; return x - Math.floor(x); };
+
+  // things drifting in the night sky, behind everything
+  const sky = document.createElement('div'); sky.className = 'parisSky'; sky.setAttribute('aria-hidden', 'true');
+  const drift = ['macaron', 'beret', 'perfume', 'heart', 'croissant', 'lipstick', 'glasses', 'heel', 'bag', 'macaron', 'heart'];
+  sky.innerHTML = drift.map((id, k) => `<span class="drift" style="left:${(4 + seed(k + 11) * 92).toFixed(1)}%;top:${(6 + seed(k + 77) * 84).toFixed(1)}%;animation-duration:${(9 + seed(k + 5) * 8).toFixed(1)}s;animation-delay:${(-seed(k + 9) * 10).toFixed(1)}s;transform:rotate(${(seed(k + 3) * 40 - 20).toFixed(0)}deg)">${svg(id)}</span>`).join('')
+    + `<span class="eiffel">${svg('eiffel')}</span>`;
+  document.body.insertBefore(sky, document.body.firstChild);
+
+  // a beret on the title
+  const h1 = document.querySelector('.title h1');
+  if (h1) h1.insertAdjacentHTML('afterbegin', `<span class="titlehat">${svg('beret')}</span>`);
+
+  // a sticker in the corner of every panel
+  const stickers = ['macaron', 'beret', 'perfume', 'heart', 'bag', 'lipstick', 'croissant', 'heel', 'glasses'];
+  function decorate() {
+    document.querySelectorAll('.panel').forEach((p, k) => {
+      if (p.querySelector(':scope > .sticker')) return;
+      p.insertAdjacentHTML('afterbegin', `<span class="sticker" style="transform:rotate(${(seed(k + 21) * 30 - 15).toFixed(0)}deg)">${svg(stickers[k % stickers.length])}</span>`);
+    });
+  }
+  decorate();
+  new MutationObserver(decorate).observe(document.querySelector('main') || document.body, { childList: true, subtree: true });
+
+  // a tiny Eiffel tower in the footer
+  const foot = document.querySelector('footer');
+  if (foot) foot.insertAdjacentHTML('afterbegin', `<span class="footicon">${svg('eiffel')}</span>`);
+
+  // stars that fly to the badge are sometimes something sweeter
+  const STAR = '<svg viewBox="0 0 100 100"><path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z" fill="#ffd98a" stroke="#2a1540" stroke-width="6" stroke-linejoin="round"/></svg>';
+  if (window.LPO) window.LPO.flyIcon = () => { const r = Math.random(); return r < .6 ? STAR : svg(r < .75 ? 'macaron' : r < .9 ? 'heart' : 'beret'); };
+
+  // more things for them to say
+  if (window.LPO_COSMO_SAYS) window.LPO_COSMO_SAYS.push('Mon béret est de travers ?', 'Un macaron, vite.', 'Je suis très chic.', 'Rue Cambon, s’il vous plaît.', 'Pas de talons pour moi.');
+  if (window.LPO_JULIETTE_SAYS) window.LPO_JULIETTE_SAYS.push('Le béret, toujours.', 'Un petit tour rue Saint-Honoré ?', 'Croissant d’abord, français ensuite.', 'Coco would approve.', 'Macarons ou mots ? Les deux.');
+})();

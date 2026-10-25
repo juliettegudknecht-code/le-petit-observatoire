@@ -71,7 +71,7 @@
     const from = fromEl ? fromEl.getBoundingClientRect() : { left: innerWidth / 2, top: innerHeight / 2, width: 0, height: 0 };
     for (let k = 0; k < n; k++) {
       const el = document.createElement('div');
-      el.className = 'fly'; el.innerHTML = STAR;
+      el.className = 'fly'; el.innerHTML = window.LPO && window.LPO.flyIcon ? window.LPO.flyIcon() : STAR;
       el.style.left = (from.left + from.width / 2 - 13 + k * 10) + 'px'; el.style.top = (from.top + from.height / 2 - 13) + 'px';
       document.body.appendChild(el);
       requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -214,6 +214,7 @@
       return { t, it, opts };
     });
     quiz = { deckId, qs, i: 0, score: 0, results: [] };
+    if (window.LPO && window.LPO.onQuizStart) window.LPO.onQuizStart();
     renderQ();
   }
   function renderQ() {
@@ -258,6 +259,7 @@
     }
     function finish(ok, el, note) {
       quiz.results[quiz.i] = ok; if (ok) { quiz.score++; award(el, 1); }
+      if (window.LPO && window.LPO.onAnswer) window.LPO.onAnswer(ok, el);
       $('#fb').innerHTML = `<span class="cheer">${ok ? rnd(window.LPO_CHEERS) : rnd(window.LPO_SOFT)}</span><div class="note">${note}</div>`;
       $('#nextQ').hidden = false; $('#nextQ').focus();
     }
@@ -267,6 +269,7 @@
     const msg = sc === 10 ? 'Dix sur dix. Cosmo aboie de joie. Cinq étoiles bonus.' : sc >= 8 ? 'Très solide. Encore un et tu les auras toutes.' : sc >= 5 ? 'Bien joué. Les ratés sont les meilleurs profs.' : 'Journée difficile, et alors. Refais les cartes de cette planète et reviens.';
     $('#quizArea').innerHTML = `<div class="panel pink"><h2>${sc} sur 10</h2><p class="big">${msg}</p><div class="row"><button class="btn pink" id="againQ">Encore dix</button><button class="btn plain" data-go="cards">Revoir les cartes</button></div></div>`;
     if (sc === 10) award($('#againQ'), 5);
+    if (sc === 10 && window.LPO.confetti) window.LPO.confetti(140);
     $('#againQ').onclick = () => startQuiz(quiz.deckId);
   }
 
@@ -417,7 +420,7 @@
     trPop.querySelector('.speak').onclick = () => speak(t);
   });
 
-  window.LPO = { $, $$, esc, rnd, shuffle, speak, award, norm, strip, SPK };
+  window.LPO = { $, $$, esc, rnd, shuffle, speak, award, norm, strip, SPK, allItems, byLevel, headword, level: () => S.level };
   // ---------- boot ----------
   renderSky(); renderHome();
 })();
