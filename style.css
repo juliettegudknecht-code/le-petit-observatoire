@@ -498,3 +498,5 @@ body.native .parisSky .cloud{display:none}
 @keyframes introRise{from{transform:translateY(14px); opacity:0}to{transform:none; opacity:1}}
 @keyframes introTwinkle{0%,100%{transform:scale(.6); opacity:.5}50%{transform:scale(1.1); opacity:1}}
 body.native .pathpanel .path{padding-top:40px}
+.intro-ring{animation:introFade .9s ease-out .25s both}
+@keyframes introFade{from{opacity:0}to{opacity:1}}
