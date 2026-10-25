@@ -9,3 +9,4 @@ Plain HTML, CSS and JavaScript. No build step. Open index.html or serve the fold
 ## iPhone app
 
 The `ios-app/` folder wraps this same site in a native iOS shell with Capacitor so it can go on the App Store. It copies the files above into the app at build time and never changes them. See `APP-STORE.md` for the steps.
+Fonts are bundled in `fonts/` so the site and the app both work offline. `native.js` only does anything inside the iPhone app.

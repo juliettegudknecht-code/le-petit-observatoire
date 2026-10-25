@@ -203,3 +203,11 @@ footer a{color:var(--yellow)}
 .shopitem .tag{font-family:'Fredoka',sans-serif; font-size:20px; background:var(--yellow); border:2px solid var(--ink); border-radius:8px; padding:1px 10px}
 .shopitem.right{background:var(--good)} .shopitem.wrong{background:var(--bad)}
 @media (max-width:640px){ .dress{grid-template-columns:1fr} .cosmo-stage svg{max-width:200px; margin:0 auto} }
+
+/* iPhone app only (body.native is set by native.js inside the Capacitor shell) */
+body.native{-webkit-tap-highlight-color:transparent; overscroll-behavior-y:none; padding-bottom:env(safe-area-inset-bottom)}
+body.native button,body.native .tab,body.native .planet{touch-action:manipulation}
+body.native .radio{padding-bottom:env(safe-area-inset-bottom)}
+.reminder{margin-top:18px}
+.reminderRow{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.reminderRow input[type=time]{font-family:'Fredoka',sans-serif; font-size:18px; border:3px solid var(--ink); border-radius:12px; padding:7px 10px; background:var(--cream); color:var(--ink); box-shadow:4px 4px 0 var(--ink)}

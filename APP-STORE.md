@@ -38,6 +38,8 @@ Run `npm run sync` again any time you change the site. The first time Xcode open
 
 4. Test these on the phone before going any further, because they are the parts a native web view can behave differently on:
    - the radio (YouTube). If a station says the video is unavailable, that is YouTube refusing to play inside an app shell without a normal web address. The fix is to pick videos that allow embedding, and if it still refuses, tell me and we will swap the radio to open in Safari or Apple Music instead.
+   - the Rappel quotidien switch on the home screen (phone only). Turn it on, allow notifications when asked, set the time a minute ahead, lock the phone, and wait for the nudge.
+   - a wrong answer should buzz and a right one should tap, if haptics are on in Settings, Sounds and Haptics.
    - the speaker button (French audio). It uses the iPhone's built-in French voice. If it is silent, add a French voice under Settings, Accessibility, Spoken Content, Voices.
    - highlight a word to translate. It calls Google and MyMemory over the network, so it needs a connection.
    - close the app fully and reopen it. Your streak and progress should still be there.
@@ -49,7 +51,7 @@ Run `npm run sync` again any time you change the site. The first time Xcode open
 2. Back in Xcode, change the run destination to Any iOS Device, then Product, Archive. When the Organizer window opens, choose Distribute App, App Store Connect, Upload, and accept the defaults. Wait for the email saying the build finished processing (ten to thirty minutes).
 
 3. In App Store Connect, fill in the app page:
-   - Screenshots: take them on your phone (side button plus volume up), AirDrop them to the Mac, and upload. You need at least one set for a 6.7 inch or 6.9 inch iPhone. The flashcards, the quiz, and a game screen are good choices.
+   - Screenshots: take them on your phone from the TestFlight build (side button plus volume up), AirDrop them to the Mac, and upload. You need at least one set for a 6.7 inch or 6.9 inch iPhone. The flashcards, the quiz, and a game screen are good choices.
    - Description: something like "A small French practice app built around flashcards grouped by planet, a ten-question quiz, a verb drill, everyday phrases with French audio, and a few dress-up and shop games starring Cosmo the pug. Content sits around A2 with an easier review setting and a harder stretch setting. Progress is saved on your phone." Keywords: french, flashcards, vocabulary, quiz, verbs, A2.
    - Category: Education. Age rating: answer no to everything, which gives 4+.
    - Support URL: https://juliettegudknecht-code.github.io/le-petit-observatoire/ works.
@@ -61,9 +63,9 @@ Run `npm run sync` again any time you change the site. The first time Xcode open
 
 4. Review notes. Apple's guideline 4.2 (minimum functionality) is the one risk here, because they turn down apps that are only a website in a box. Put something like this in the Notes for Review box so the reviewer knows what to look for:
 
-   "This is a personal French-learning app. All content is bundled inside the app and works offline: flashcard decks grouped by theme with spaced review, a ten-question quiz with scoring, a verb conjugation drill, phrase cards with text-to-speech, and three dress-up and shopping mini games that reinforce vocabulary. Progress and streaks are saved on the device. The only network use is an optional internet radio and an optional highlight-to-translate helper. No account, no ads, no data collection."
+   "This is a personal French-learning app. All content and fonts are bundled inside the app and it works fully offline: flashcard decks grouped by theme with spaced review, a ten-question quiz with scoring, a verb conjugation drill, phrase cards with text-to-speech, and three dress-up and shopping mini games that reinforce vocabulary. Progress and streaks are saved on the device. It uses native haptic feedback on answers, a native daily reminder notification the user can turn on from the home screen, and the system status bar. The only network use is an optional internet radio and an optional highlight-to-translate helper. No account, no ads, no data collection."
 
-   Things that help with 4.2: the app opens instantly with no spinner, works in airplane mode, has a real icon and launch screen, and does not look like a browser (no address bar, no page links that leave the app). All of that is already true of this build. If Apple still rejects on 4.2, reply in Resolution Center pointing at the games and offline quiz, and consider adding one phone-only feature such as a daily reminder notification, which I can wire in.
+   Things that help with 4.2: the app opens instantly with no spinner, works in airplane mode (fonts are bundled, nothing is fetched at launch), has a real icon and launch screen, uses native haptics, notifications and status bar, and does not look like a browser (no address bar, no pinch zoom, no page links that leave the app). All of that is true of this build. If Apple still rejects on 4.2, reply in Resolution Center pointing at the games, the offline quiz and the reminder feature.
 
 5. Submit for review. First reviews usually take one to three days.
 
@@ -84,7 +86,9 @@ TestFlight is Apple's way of installing a store build on real phones before it i
 ## What is where
 
 - `ios-app/capacitor.config.json`: app name, bundle ID, purple background.
-- `ios-app/sync-web.sh`: the copy step. It lists the eight site files it bundles. Add a file there if you add one to the site.
+- `ios-app/sync-web.sh`: the copy step. It lists the site files it bundles plus the fonts folder. Add a file there if you add one to the site.
+- `native.js` in the site: the only file that knows about the phone. It adds haptics, the status bar style and the daily reminder, and does nothing on the website.
+- Native plugins: local notifications, haptics and status bar, all official Capacitor plugins pulled in by `npm run sync` through Swift Package Manager.
 - `ios-app/ios/App/App/Assets.xcassets`: the 1024 px icon and the purple launch image, both generated from `icon-512.png`.
 - `ios-app/ios/App/App/Info.plist`: display name, orientations, and the no-custom-encryption flag. Nothing else needed since the app has no camera, location, or microphone use.
 - `ios-app/ios/App/App/PrivacyInfo.xcprivacy`: Apple's privacy manifest. It says no tracking, no collected data, and declares the one required-reason API Capacitor touches (user defaults, reason CA92.1).
