@@ -430,3 +430,53 @@ body.native .starbadge{margin-top:8px; font-size:16px; padding:4px 12px}
 body.native .langbtn{margin-top:8px}
 body.native .parisSky .skyline{height:90px; opacity:.4}
 body.native .pathpanel .path{padding-top:14px}
+
+body.native .radio{padding-bottom:0}
+body.native .appbar{height:calc(44px + env(safe-area-inset-top)); font-size:19px}
+body.native:not(.home) main{padding-top:calc(44px + env(safe-area-inset-top))}
+body.native:not(.home) .panel:first-child{margin-top:10px}
+
+/* more pink */
+:root{--edge:#f3b9db; --lilac2:#ffe0f0; --sky2:#ffb3dc}
+body{background:linear-gradient(180deg,#ffc2e4 0%,#ffd6ec 45%,#f6d9ff 100%)}
+.panel{box-shadow:0 5px 0 #f3b9db} .panel.soft{background:#fff0f7} .panel.pink{background:#ffd9ec}
+.btn.plain,.tab,.opt,.game,.face,.buildline,.starbadge,.radio,.bubble,.kbd-hint,footer,.tr-pop,.memface{border-color:#f7cfe6; box-shadow:0 4px 0 #f3b9db}
+.btn.lilac{background:#ff9fd3; box-shadow:0 4px 0 #d64f9c} .btn.plain{background:#fff}
+.btn.good{background:#8fe3b7} .btn.bad{background:#ff9fb6}
+.tab.on{background:var(--pink); box-shadow:0 4px 0 #d64f9c}
+.radio{background:#ffd6ec}
+.bar .track,.orbit .track{background:#ffe3f1}
+.pball{box-shadow:inset 0 -6px 0 rgba(214,79,156,.25), 0 5px 0 rgba(214,79,156,.25)}
+.pnode.current .pball{box-shadow:inset 0 -6px 0 rgba(214,79,156,.25), 0 5px 0 rgba(214,79,156,.25), 0 0 0 4px #fff, 0 0 0 7px var(--pink)}
+.memback{background-color:#ff9fd3}
+.chip{background:#ffd1e8; box-shadow:0 3px 0 #d64f9c}
+.speak{background:#ff9fd3; box-shadow:0 3px 0 #d64f9c}
+.blob.b{background:var(--pink)} .blob.c{background:#ff9fd3}
+.skyline svg path[fill="#cdb6ff"]{fill:#ffc2e4} .skyline svg path[fill="#e6d9ff"]{fill:#ffd6ec} .skyline svg path[fill="#8f63e6"]{fill:#d64f9c}
+body.native .tabs{background:rgba(255,236,246,.97); border-top-color:#f7cfe6}
+body.native .tab{color:#b57aa0}
+body.native .appbar{background:rgba(255,228,243,.94); border-bottom-color:#f7cfe6}
+.title h1{filter:drop-shadow(0 5px 0 #d64f9c) drop-shadow(0 9px 0 rgba(42,21,64,.16))}
+.title h1{background:linear-gradient(180deg,#fff 0%,#fff 38%,#ff6fbf 50%,#ffd0e8 100%); -webkit-background-clip:text; background-clip:text}
+
+/* app home top */
+body.native .top{grid-template-columns:1fr 1fr; grid-template-areas:'t t' 'j c'; gap:0; align-items:end; padding:4px 10px 0}
+body.native .title{grid-area:t; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px}
+body.native .logo{flex-basis:100%; padding:8px 10px 10px}
+body.native .title h1{font-size:23px}
+body.native .title p{display:none}
+body.native .starbadge{margin:0; font-size:15px; padding:5px 12px; border-radius:14px}
+body.native .starbadge svg{width:18px; height:18px}
+body.native .langbtn{margin:0; font-size:12px; padding:5px 10px; border-radius:14px}
+body.native .char{width:112px; animation:none}
+body.native .char.j{grid-area:j; justify-self:end; margin-right:6px} body.native .char.c{grid-area:c; justify-self:start; margin-left:6px}
+body.native .cta{display:block; width:calc(100% - 28px); margin:4px 14px 0; padding:14px; font-size:19px; border-radius:18px; text-align:center}
+body.native:not(.home) .cta{display:none}
+body.native #view-home{display:flex; flex-direction:column}
+body.native .pathpanel{order:-1}
+body.native #view-home .row:has([data-go]){display:none}
+body.native #view-home > .panel:first-child{order:0}
+body.native #view-home h2{font-size:22px}
+body.native .pathpanel .path{gap:16px}
+body.native .pnode{width:112px} body.native .pbtn{width:66px;height:66px}
+body.native .parisSky .cloud{display:none}

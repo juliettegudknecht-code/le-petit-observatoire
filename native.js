@@ -22,6 +22,13 @@
   const syncView = () => { const t = document.querySelector('.tab.on'); const home = !t || t.dataset.view === 'home'; document.body.classList.toggle('home', home); bar.querySelector('.appbar-title').textContent = home ? '' : titleOf(); };
   new MutationObserver(syncView).observe(document.getElementById('tabs'), { attributes: true, subtree: true, attributeFilter: ['class'] });
   syncView();
+  // home hero: one big Continuer button that opens the next planet on the path
+  const top = document.querySelector('header.top');
+  if (top) {
+    const cta = document.createElement('button'); cta.className = 'btn pink cta'; cta.textContent = 'Continuer';
+    top.insertAdjacentElement('afterend', cta);
+    cta.onclick = () => { const n = document.querySelector('.pnode.current .pbtn') || document.querySelector('.pbtn[data-path]'); if (n) n.click(); else document.querySelector('.tab[data-view="quiz"]').click(); };
+  }
   if (!isNative) return;
   const plugin = name => { try { return C.registerPlugin(name); } catch (e) { return null; } };
   const Haptics = plugin('Haptics'), StatusBar = plugin('StatusBar'), Notes = plugin('LocalNotifications');
