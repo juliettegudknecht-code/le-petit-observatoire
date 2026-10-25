@@ -71,6 +71,16 @@ Run `npm run sync` again any time you change the site. The first time Xcode open
 
 5. Submit for review. First reviews usually take one to three days.
 
+
+## While the Developer Program is still pending
+
+A free Apple ID cannot upload to TestFlight or the App Store; that waits for the enrollment email. It can put the app on your own iPhone over a cable, for seven days at a time:
+
+1. Plug the iPhone into the Mac with a cable, unlock it, and tap Trust if it asks.
+2. Open the project (`open ~/Downloads/le-petit-observatoire/ios-app/ios/App/App.xcodeproj`), click the blue App project, the App target, Signing and Capabilities, tick Automatically manage signing, and choose "Juliette Gudknecht (Personal Team)".
+3. Pick your iPhone at the top as the run destination and press the play button. The first time, the phone asks you to trust the developer under Settings, General, VPN and Device Management.
+4. After seven days the app stops opening; press play again in Xcode to refresh it. Once the paid program is approved, switch the Team dropdown to the paid team and the TestFlight steps above apply.
+
 ## Test it through TestFlight before you submit
 
 Shortcut from the terminal: once Xcode is signed in to your Apple ID and your team shows up, this does the sync, archive and upload in one go (replace the ten-character team ID with yours from developer.apple.com/account):
