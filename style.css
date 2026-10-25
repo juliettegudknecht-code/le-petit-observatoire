@@ -212,5 +212,5 @@ body.native .radio{padding-bottom:env(safe-area-inset-bottom)}
 .reminderRow{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
 .reminderRow input[type=time]{font-family:'Fredoka',sans-serif; font-size:18px; border:3px solid var(--ink); border-radius:12px; padding:7px 10px; background:var(--cream); color:var(--ink); box-shadow:4px 4px 0 var(--ink)}
 
-.langbtn{margin:12px 0 0 12px; vertical-align:bottom}
+.langbtn{margin:12px 0 0 12px; vertical-align:bottom; color:var(--ink); background:var(--yellow)}
 .en-mode .ex .en, .en-mode .phrase .en{display:none}
