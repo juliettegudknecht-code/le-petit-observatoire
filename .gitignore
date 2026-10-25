@@ -1,0 +1,5 @@
+.DS_Store
+
+# iOS wrapper build output (the generated Xcode project itself is committed)
+ios-app/node_modules/
+ios-app/www/

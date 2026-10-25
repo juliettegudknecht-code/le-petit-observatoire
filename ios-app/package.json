@@ -1,0 +1,15 @@
+{
+  "name": "le-petit-observatoire-ios",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Capacitor iOS wrapper for Le Petit Observatoire (the static site one folder up)",
+  "scripts": {
+    "sync": "sh sync-web.sh && cap sync ios",
+    "open": "cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/cli": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/ios": "^8.5.3"
+  }
+}
