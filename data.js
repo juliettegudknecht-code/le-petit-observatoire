@@ -189,6 +189,39 @@ window.LPO_DECKS = [
       ['le verre', 'glass, a drink', 'On prend un verre ce soir ?', 'Drinks tonight?', 2],
       ["l'Arc de Triomphe (m)", 'the Arc de Triomphe', "On voyait l'Arc de Triomphe depuis le balcon.", 'We could see the Arc de Triomphe from the balcony.', 2]
     ]
+  },
+  {
+    id: 'mode', name: 'La mode', en: 'fashion', blurb: 'Chanel, Dior, Louis Vuitton and the words to window-shop them.',
+    planet: { body: '#f5efe6', ring: '#d4af37', spots: '#2a1540' },
+    items: [
+      ['le sac à main', 'handbag', 'Le sac Louis Vuitton coûte plus cher que mon loyer.', 'The Louis Vuitton bag costs more than my rent.', 1],
+      ['la haute couture', 'high fashion', 'Chanel et Dior font de la haute couture.', 'Chanel and Dior do high fashion.', 2],
+      ['le défilé', 'fashion show', 'Le défilé Dior est en septembre.', 'The Dior show is in September.', 2],
+      ['le parfum', 'perfume', 'Le N°5 de Chanel est un parfum de 1921.', 'Chanel N°5 is a perfume from 1921.', 1],
+      ['le rouge à lèvres', 'lipstick', 'Un rouge à lèvres rouge, comme le béret.', 'A red lipstick, like the beret.', 2],
+      ['les talons (m)', 'heels', 'Je ne marche pas dans Paris en talons.', 'I do not walk around Paris in heels.', 2],
+      ['la robe', 'dress', "La petite robe noire, c'est Chanel.", 'The little black dress is Chanel.', 1],
+      ['le foulard', 'scarf (silk)', 'Un foulard en soie autour du cou.', 'A silk scarf around the neck.', 2],
+      ['les lunettes de soleil (f)', 'sunglasses', 'Des lunettes de soleil, même en hiver.', 'Sunglasses, even in winter.', 1],
+      ['le tailleur', 'suit (for women)', 'Le tailleur en tweed, c\'est Coco Chanel.', 'The tweed suit is Coco Chanel.', 3],
+      ['la maison de couture', 'fashion house', 'Dior est une maison de couture de 1946.', 'Dior is a fashion house from 1946.', 3],
+      ['le créateur, la créatrice', 'designer', 'Ma créatrice préférée est Coco Chanel.', 'My favorite designer is Coco Chanel.', 2],
+      ['chic', 'chic', 'Un béret et un trench, très chic.', 'A beret and a trench coat, very chic.', 1],
+      ['élégant, élégante', 'elegant', 'Elle est toujours élégante, même fatiguée.', 'She is always elegant, even tired.', 1],
+      ['le mannequin', 'model', 'Le mannequin marche vite sur le podium.', 'The model walks fast on the runway.', 2],
+      ['essayer', 'to try on', "Je peux essayer cette robe ?", 'Can I try on this dress?', 1],
+      ['la boutique', 'shop', 'La boutique Dior est avenue Montaigne.', 'The Dior shop is on avenue Montaigne.', 1],
+      ['cher, chère', 'expensive', "C'est trop cher, mais je regarde quand même.", 'It is too expensive, but I am still looking.', 1],
+      ['la vitrine', 'shop window', 'Je rêve devant la vitrine de Louis Vuitton.', 'I dream in front of the Louis Vuitton window.', 2],
+      ['le maquillage', 'makeup', 'Mon maquillage préféré, c\'est le fard rose.', 'My favorite makeup is pink eyeshadow.', 2],
+      ['les perles (f)', 'pearls', 'Un collier de perles, comme Coco.', 'A pearl necklace, like Coco.', 2],
+      ['la tenue', 'outfit', 'Ma tenue du jour : béret, trench et baskets.', 'My outfit today: beret, trench and sneakers.', 2],
+      ['le trench', 'trench coat', 'Il pleut, je mets mon trench.', 'It is raining, I am putting on my trench.', 1],
+      ['la ceinture', 'belt', 'La ceinture est en cuir.', 'The belt is leather.', 2],
+      ['le cuir', 'leather', 'Le sac est en cuir noir.', 'The bag is black leather.', 2],
+      ['la soie', 'silk', 'Le foulard Dior est en soie.', 'The Dior scarf is silk.', 2],
+      ['faire du lèche-vitrines', 'to window-shop', 'À Paris, je fais du lèche-vitrines rue Saint-Honoré.', 'In Paris I window-shop on rue Saint-Honoré.', 3]
+    ]
   }
 ];
 
@@ -224,6 +257,8 @@ window.LPO_VERBS = [
 
 // Grammar fill-ins: sentence with ___, four options, index of the right one, a short explanation, level.
 window.LPO_GRAMMAR = [
+  { s: 'Ce sac Louis Vuitton est ___ cher que mon loyer.', o: ['plus', 'aussi', 'très', 'beaucoup'], a: 0, x: 'Plus ... que for a comparison. Sadly accurate.', lvl: 1 },
+  { s: 'Elle ___ une robe Dior pour le défilé.', o: ['a essayé', 'est essayée', 'a essayer', 'essayé'], a: 0, x: 'Essayer takes avoir, and the participle ends in -é.', lvl: 2 },
   { s: 'Hier, je ___ allée au bureau.', o: ['suis', 'ai', 'es', 'est'], a: 0, x: 'Aller takes être in the passé composé. And since you are a she, allée gets its extra e.', lvl: 2 },
   { s: 'Cosmo et moi, nous ___ en Floride.', o: ['habitons', 'habitez', 'habite', 'habitent'], a: 0, x: 'Cosmo and me = nous, so the verb ends in -ons.', lvl: 1 },
   { s: 'Je ___ les données tous les jours.', o: ['vérifie', 'vérifies', 'vérifions', 'vérifient'], a: 0, x: 'Regular -er verb with je: drop the -er, add -e.', lvl: 1 },
@@ -264,6 +299,8 @@ window.LPO_GRAMMAR = [
 
 // Phrases about real life. [french, english, level]
 window.LPO_PHRASES = [
+  ["Un jour, je m'offrirai un sac Chanel. Ou au moins le parfum.", 'One day I will treat myself to a Chanel bag. Or at least the perfume.', 3],
+  ['Mon style, c\'est béret rouge, trench et baskets.', 'My style is a red beret, a trench coat and sneakers.', 2],
   ["Bonjour, je m'appelle Juliette.", 'Hi, my name is Juliette.', 1],
   ['Je suis data scientist. Je travaille avec des données.', 'I am a data scientist. I work with data.', 2],
   ['Je travaille pour le gouvernement fédéral, dans le logement.', 'I work for the federal government, in housing.', 2],
@@ -292,13 +329,13 @@ window.LPO_PHRASES = [
   ["Ce soir, je ne fais rien. Et c'est parfait.", 'Tonight I am doing nothing. And that is perfect.', 1]
 ];
 
-window.LPO_CHEERS = ['Génial !', 'Bravo !', 'Trop fort !', 'Nickel !', 'Impeccable !', 'Parfait !', 'Ouais !', 'Excellent !', 'Super !', "C'est ça !", 'Et voilà !'];
+window.LPO_CHEERS = ['Génial !', 'Bravo !', 'Trop fort !', 'Nickel !', 'Impeccable !', 'Parfait !', 'Ouais !', 'Excellent !', 'Super !', "C'est ça !", 'Et voilà !', 'Très chic !'];
 window.LPO_SOFT = ['Pas grave.', 'Presque !', 'On réessaie.', "C'est pas facile, celui-là.", 'La prochaine fois.', 'Ça viendra.'];
 
 // Things Cosmo says when you tap him.
 window.LPO_COSMO_SAYS = ['Ouaf !', 'Une friandise ?', 'On sort ?', 'Je ronfle, moi ?', 'Câlin.', 'Encore une carte !', 'Je suis sage.', 'Rrrronfle.'];
 // Things cartoon Juliette says when you tap her.
-window.LPO_JULIETTE_SAYS = ['Allez, une de plus.', 'Santé !', 'Regarde, une étoile.', 'Pas de stress.', 'Pause café ?', 'Ça rentre, promis.', 'Bisous de Paris.'];
+window.LPO_JULIETTE_SAYS = ['Allez, une de plus.', 'Santé !', 'Regarde, une étoile.', 'Pas de stress.', 'Pause café ?', 'Ça rentre, promis.', 'Bisous de Paris.', 'Très chic, non ?', 'Coco serait fière.'];
 
 // Music stations (YouTube video ids).
 window.LPO_STATIONS = [

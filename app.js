@@ -375,6 +375,47 @@
   function load(src) { if (src.list) yt.loadPlaylist({ list: src.list, listType: 'playlist' }); else yt.loadPlaylist(src.videos); }
   window.onYouTubeIframeAPIReady = () => { if (pendingPlay) { pendingPlay = false; play(); } };
 
+
+  // ---------- highlight to translate ----------
+  const trBtn = document.createElement('button'); trBtn.className = 'tr-btn'; trBtn.textContent = 'Translate'; trBtn.hidden = true; document.body.appendChild(trBtn);
+  const trPop = document.createElement('div'); trPop.className = 'tr-pop'; trPop.hidden = true; document.body.appendChild(trPop);
+  let selText = '', selRect = null;
+  function updateSel() {
+    const sel = window.getSelection(); const t = sel && sel.toString().trim();
+    if (!t || t.length > 400 || sel.rangeCount === 0 || trPop.contains(sel.anchorNode)) { trBtn.hidden = true; return; }
+    const r = sel.getRangeAt(0).getBoundingClientRect(); if (!r.width && !r.height) { trBtn.hidden = true; return; }
+    selText = t; selRect = r; trPop.hidden = true;
+    trBtn.hidden = false; trBtn.style.left = Math.max(8, Math.min(innerWidth - 110, r.left + r.width / 2 - 50)) + 'px'; trBtn.style.top = Math.max(8, r.top + scrollY - 44) + 'px';
+  }
+  document.addEventListener('selectionchange', () => { clearTimeout(window._selT); window._selT = setTimeout(updateSel, 250); });
+  document.addEventListener('mousedown', e => { if (!trBtn.contains(e.target) && !trPop.contains(e.target)) { trPop.hidden = true; } });
+  function localLookup(t) {
+    const n = strip(norm(t)); const hits = allItems().filter(it => strip(norm(headword(it.fr))) === n || strip(norm(bare(it.fr))) === n || strip(norm(it.exFr)) === n);
+    if (hits.length) return hits[0].exFr && strip(norm(hits[0].exFr)) === n ? hits[0].exEn : hits[0].en;
+    const ph = PHRASES.find(p => strip(norm(p[0])) === n); return ph ? ph[1] : null;
+  }
+  async function translate(t) {
+    const local = localLookup(t); if (local) return local;
+    try {
+      const r = await fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=fr&tl=en&dt=t&q=' + encodeURIComponent(t));
+      if (r.ok) { const j = await r.json(); const out = (j[0] || []).map(x => x[0]).join(''); if (out) return out; }
+    } catch (e) {}
+    try {
+      const r = await fetch('https://api.mymemory.translated.net/get?langpair=fr|en&q=' + encodeURIComponent(t));
+      if (r.ok) { const j = await r.json(); if (j.responseData && j.responseData.translatedText) return j.responseData.translatedText; }
+    } catch (e) {}
+    return null;
+  }
+  trBtn.addEventListener('mousedown', e => e.preventDefault());
+  trBtn.addEventListener('click', async () => {
+    trBtn.hidden = true; const t = selText; if (!t) return;
+    trPop.hidden = false; trPop.innerHTML = '<div class="tr-fr">' + esc(t) + '</div><div class="tr-en muted">Translating...</div>';
+    trPop.style.left = Math.max(8, Math.min(innerWidth - 300, selRect.left)) + 'px'; trPop.style.top = (selRect.bottom + scrollY + 8) + 'px';
+    const out = await translate(t);
+    trPop.innerHTML = '<div class="tr-fr">' + esc(t) + ' <button class="speak sm" aria-label="Écouter">' + SPK + '</button></div><div class="tr-en">' + (out ? esc(out) : 'No translation came back. Check the connection and try again.') + '</div>';
+    trPop.querySelector('.speak').onclick = () => speak(t);
+  });
+
   // ---------- boot ----------
   renderSky(); renderHome();
 })();

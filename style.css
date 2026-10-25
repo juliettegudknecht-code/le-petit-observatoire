@@ -174,3 +174,10 @@ footer{text-align:center; color:var(--cream); opacity:.85; margin-top:30px; font
   .char,.planet svg,.blob,.twinkle{animation:none}
   .fly{transition:none}
 }
+
+/* highlight to translate */
+.tr-btn{position:absolute; z-index:60; background:var(--pink); border:3px solid var(--ink); border-radius:10px; padding:4px 12px; font-family:'Fredoka',sans-serif; font-size:16px; box-shadow:3px 3px 0 var(--ink)}
+.tr-pop{position:absolute; z-index:60; width:290px; max-width:calc(100vw - 16px); background:var(--cream); border:3px solid var(--ink); border-radius:14px; padding:12px 14px; box-shadow:var(--shadow); font-size:16px}
+.tr-pop .tr-fr{font-family:'Fredoka',sans-serif; font-size:18px; margin-bottom:6px; display:flex; gap:8px; align-items:center; justify-content:space-between}
+.tr-pop .speak.sm{width:34px; height:34px}
+.tr-pop .speak.sm svg{width:18px;height:18px}
