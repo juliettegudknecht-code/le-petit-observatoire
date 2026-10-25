@@ -8,7 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Observatoire">
+<meta name="theme-color" content="#2a1850">
+<link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z' fill='%23ffd98a' stroke='%232a1540' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E">
 </head>
 <body>
@@ -137,6 +143,7 @@
   <button class="tab" data-view="quiz">Quiz</button>
   <button class="tab" data-view="verbs">Verbes</button>
   <button class="tab" data-view="phrases">Phrases</button>
+  <button class="tab" data-view="games">Jeux</button>
 </nav>
 
 <main>
@@ -165,7 +172,7 @@
         <button class="btn plain" data-lvl="2">Juste bien (A2)</button>
         <button class="btn plain" data-lvl="3">Un cran au-dessus (B1)</button>
       </div>
-      <p class="small" style="margin-top:12px">Duolingo level 27 lands around A2, so Juste bien is the default. Nudge it if things feel too easy or too hard. Tap Cosmo or Juliette up top whenever you want a word of encouragement, and the radio in the corner has Indila on station one. Highlight any French on the page and a Translate button pops up. La mode is the new planet for all things Chanel, Dior and Louis Vuitton.</p>
+      <p class="small" style="margin-top:12px">Duolingo level 27 lands around A2, so Juste bien is the default. Nudge it if things feel too easy or too hard. Tap Cosmo or Juliette up top whenever you want a word of encouragement, and the radio in the corner has Indila on station one. The Jeux tab has three Paris fashion games with Cosmo. Highlight any French on the page and a Translate button pops up. La mode is the new planet for all things Chanel, Dior and Louis Vuitton.</p>
     </div>
   </div>
   <div class="panel" id="progressPanel"></div>
@@ -200,6 +207,8 @@
     <div id="verbTableArea" style="margin-top:14px"></div>
   </div>
 </section>
+
+<section id="view-games" hidden><div id="gameArea"></div></section>
 
 <section id="view-phrases" hidden>
   <div class="panel">
@@ -236,6 +245,7 @@
 </aside>
 
 <script src="data.js?v=2"></script>
-<script src="app.js?v=3"></script>
+<script src="app.js?v=4"></script>
+<script src="games.js?v=1"></script>
 </body>
 </html>

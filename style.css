@@ -181,3 +181,24 @@ footer{text-align:center; color:var(--cream); opacity:.85; margin-top:30px; font
 .tr-pop .tr-fr{font-family:'Fredoka',sans-serif; font-size:18px; margin-bottom:6px; display:flex; gap:8px; align-items:center; justify-content:space-between}
 .tr-pop .speak.sm{width:34px; height:34px}
 .tr-pop .speak.sm svg{width:18px;height:18px}
+
+/* games */
+.gamelist{display:flex; flex-direction:column; gap:12px}
+.game{display:flex; gap:16px; align-items:center; text-align:left; background:#fff; border:3px solid var(--ink); border-radius:14px; padding:12px 16px; box-shadow:4px 4px 0 var(--ink); font-size:16px}
+.game:hover{background:var(--lilac2)}
+.gpic{width:84px; flex:none} .gpic svg{width:84px; height:84px}
+.dress{display:grid; grid-template-columns:260px 1fr; gap:20px; align-items:start}
+.cosmo-stage svg,.cosmo-big{width:100%; max-width:260px; display:block; filter:drop-shadow(5px 6px 0 rgba(0,0,0,.18))}
+.runway-stage{text-align:center} .runway-stage svg{width:200px; height:200px; display:block; margin:0 auto}
+.wear{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
+.wearbtn{background:#fff; border:3px solid var(--ink); border-radius:12px; padding:6px; width:76px; box-shadow:3px 3px 0 var(--ink); font-size:11px; line-height:1.2}
+.wearbtn svg{width:56px; height:56px; display:block; margin:0 auto}
+.wearbtn.on{background:var(--pink2)} .wearbtn:disabled{opacity:.6}
+.wearbtn.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.shelf{display:flex; flex-wrap:wrap; gap:14px; margin:8px 0}
+.shopitem{background:#fff; border:3px solid var(--ink); border-radius:14px; padding:10px; width:140px; box-shadow:4px 4px 0 var(--ink); display:flex; flex-direction:column; align-items:center; gap:4px}
+.shopitem svg{width:84px; height:84px}
+.shopitem .tag{font-family:'Fredoka',sans-serif; font-size:20px; background:var(--yellow); border:2px solid var(--ink); border-radius:8px; padding:1px 10px}
+.shopitem.right{background:var(--good)} .shopitem.wrong{background:var(--bad)}
+@media (max-width:640px){ .dress{grid-template-columns:1fr} .cosmo-stage svg{max-width:200px; margin:0 auto} }

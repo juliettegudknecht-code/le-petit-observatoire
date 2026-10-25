@@ -92,6 +92,7 @@
     if (view === 'quiz' && !quiz) quizSetup();
     if (view === 'verbs') verbNew();
     if (view === 'phrases') renderPhrases();
+    if (view === 'games' && window.LPO.gamesMenu) window.LPO.gamesMenu();
   }
   $('#tabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if (t) show(t.dataset.view); });
   document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) show(g.dataset.go); });
@@ -416,6 +417,7 @@
     trPop.querySelector('.speak').onclick = () => speak(t);
   });
 
+  window.LPO = { $, $$, esc, rnd, shuffle, speak, award, norm, strip, SPK };
   // ---------- boot ----------
   renderSky(); renderHome();
 })();
