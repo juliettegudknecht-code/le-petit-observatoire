@@ -4,6 +4,8 @@ The site in this folder is wrapped as a native iPhone app with Capacitor. The wr
 
 Everything below needs your Apple ID, your phone, or your credit card, so it is on you. Nothing here has been enrolled, signed in to, or paid for yet.
 
+Status on 25 October 2026: Xcode 27.1 is installed and the license is accepted. The project builds cleanly for the iOS Simulator on this Mac (xcodebuild, zero errors), and iOS 27.0 and 27.1 simulator runtimes are installed. No Apple signing identity exists yet, which is the one thing standing between here and TestFlight.
+
 ## One-time setup on this Mac
 
 1. Install Xcode from the Mac App Store (free, about 12 GB, takes a while). Open it once so it can finish installing its components, then run this so the command line tools point at the full Xcode:
@@ -70,6 +72,14 @@ Run `npm run sync` again any time you change the site. The first time Xcode open
 5. Submit for review. First reviews usually take one to three days.
 
 ## Test it through TestFlight before you submit
+
+Shortcut from the terminal: once Xcode is signed in to your Apple ID and your team shows up, this does the sync, archive and upload in one go (replace the ten-character team ID with yours from developer.apple.com/account):
+
+```bash
+sh ~/Downloads/le-petit-observatoire/ios-app/testflight.sh AB12CD34EF
+```
+
+The first run may ask Xcode to create the App ID and profile; -allowProvisioningUpdates lets it. If it complains that the bundle ID is not registered, create the app in App Store Connect first (step 1 of the upload section).
 
 TestFlight is Apple's way of installing a store build on real phones before it is public. Same upload, different button. Do this at least once because the store build is signed differently from the one Xcode puts on your phone directly.
 
