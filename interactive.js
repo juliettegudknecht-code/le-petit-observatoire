@@ -91,6 +91,34 @@
     });
   })();
 
+
+  // ---------- desktop: sidebar wrapper + keyboard shortcuts ----------
+  (function () {
+    const top = document.querySelector('header.top'), tabs = document.getElementById('tabs');
+    if (top && tabs && top.parentNode === tabs.parentNode) {
+      const side = document.createElement('div'); side.className = 'side';
+      top.parentNode.insertBefore(side, top); side.appendChild(top); side.appendChild(tabs);
+      side.insertAdjacentHTML('beforeend', '<p class="kbd-hint"><kbd>1</kbd> à <kbd>6</kbd> pour les onglets, <kbd>1</kbd> à <kbd>4</kbd> pour répondre, <kbd>Entrée</kbd> pour la suite, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> et <kbd>espace</kbd> sur les cartes.</p>');
+    }
+    const visible = el => el && !el.hidden && el.offsetParent !== null;
+    document.addEventListener('keydown', e => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.target && e.target.matches && e.target.matches('input,textarea,select,[contenteditable]')) return;
+      const k = e.key;
+      if (/^[1-9]$/.test(k)) {
+        const opts = $$('.opt:not(:disabled), #chips .chip:not(:disabled), .wearbtn:not(:disabled), .shopitem:not(:disabled)').filter(visible);
+        if (opts.length) { const o = opts[+k - 1]; if (o) { e.preventDefault(); o.click(); } return; }
+        const tab = $$('.tab')[+k - 1]; if (tab) { e.preventDefault(); tab.click(); }
+        return;
+      }
+      if (k === 'Enter') {
+        const next = ['#nextQ', '#bNext', '#bCheck', '#startQuiz', '#again', '#againQ', '#bAgain', '#mAgain', '#verbNext', '#verbGo'].map(s => $(s)).find(visible);
+        if (next) { e.preventDefault(); next.click(); }
+      }
+      if (k === 'Escape') { const q = ['#quitQuiz', '#bQuit', '#mQuit'].map(s => $(s)).find(visible); if (q) q.click(); }
+    });
+  })();
+
   // ---------- Construis la phrase ----------
   let build = null;
   function sentencePool() {
