@@ -480,3 +480,21 @@ body.native #view-home h2{font-size:22px}
 body.native .pathpanel .path{gap:16px}
 body.native .pnode{width:112px} body.native .pbtn{width:66px;height:66px}
 body.native .parisSky .cloud{display:none}
+
+/* intro reel (app only) */
+.intro{position:fixed; inset:0; z-index:100; background:linear-gradient(180deg,#ffb3dc,#ffd6ec 60%,#f6d9ff); display:flex; align-items:center; justify-content:center; transition:opacity .55s ease}
+.intro.out{opacity:0; pointer-events:none}
+.intro-stage{position:relative; display:flex; flex-direction:column; align-items:center; gap:10px; padding-top:env(safe-area-inset-top)}
+.intro-planet{width:180px; height:180px; animation:introPop .7s cubic-bezier(.2,1.4,.4,1) both; filter:drop-shadow(0 8px 0 rgba(214,79,156,.35))}
+.intro-ring{transform-origin:100px 104px; animation:introRing 1.4s ease-in-out .2s both}
+.intro-ringfront{animation:introFront 1.4s ease-in-out .2s both}
+.intro-title{font-family:'Righteous',sans-serif; font-size:30px; color:#fff; -webkit-text-stroke:1.2px #4a2a7a; letter-spacing:1px; filter:drop-shadow(0 4px 0 #d64f9c); animation:introRise .6s ease-out .45s both}
+.intro-sub{font-family:'Comfortaa',sans-serif; font-weight:700; color:#8a4fc9; font-size:15px; letter-spacing:.6px; animation:introRise .6s ease-out .7s both}
+.intro-star{position:absolute; width:14px; height:14px; background:#ffd98a; clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%); animation:introTwinkle 1.2s ease-in-out infinite}
+.intro-star.s1{left:-30px; top:20px} .intro-star.s2{right:-26px; top:60px; animation-delay:.3s; width:10px; height:10px} .intro-star.s3{left:10px; bottom:30px; animation-delay:.6s; width:9px; height:9px}
+@keyframes introPop{from{transform:scale(.2) rotate(-20deg); opacity:0}to{transform:none; opacity:1}}
+@keyframes introRing{from{transform:rotate(-18deg) scaleX(.2); opacity:0}40%{opacity:1}to{transform:none; opacity:1}}
+@keyframes introFront{from{opacity:0}60%{opacity:0}to{opacity:1}}
+@keyframes introRise{from{transform:translateY(14px); opacity:0}to{transform:none; opacity:1}}
+@keyframes introTwinkle{0%,100%{transform:scale(.6); opacity:.5}50%{transform:scale(1.1); opacity:1}}
+body.native .pathpanel .path{padding-top:40px}

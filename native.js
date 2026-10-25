@@ -6,6 +6,30 @@
   if (!isNative && !standalone) return;
   document.body.classList.add('native');
 
+  // intro reel: planet pops in, ring sweeps round, the name rises, then it fades into the app
+  (function () {
+    const INK = '#2a1540';
+    const el = document.createElement('div'); el.className = 'intro'; el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = `<div class="intro-stage">
+      <svg class="intro-planet" viewBox="0 0 200 200">
+        <defs><radialGradient id="ipg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".5" stop-color="#c79bff" stop-opacity="0"/><stop offset="1" stop-color="${INK}" stop-opacity=".25"/></radialGradient></defs>
+        <g class="intro-ring"><ellipse cx="100" cy="104" rx="92" ry="26" fill="none" stroke="#fff" stroke-width="9" transform="rotate(-18 100 104)"/><ellipse cx="100" cy="104" rx="92" ry="26" fill="none" stroke="${INK}" stroke-width="2.5" opacity=".5" transform="rotate(-18 100 104)"/></g>
+        <circle cx="100" cy="100" r="58" fill="#b48cff" stroke="${INK}" stroke-width="5"/>
+        <circle cx="82" cy="86" r="9" fill="#ff9fd3"/><circle cx="118" cy="118" r="6" fill="#ff9fd3"/><circle cx="96" cy="124" r="4" fill="#ff9fd3"/>
+        <circle cx="100" cy="100" r="58" fill="url(#ipg)"/>
+        <path d="M58 54 C56 34 84 24 104 26 C128 28 148 38 142 54 C122 46 80 46 58 54Z" fill="#e03a3a" stroke="${INK}" stroke-width="4.5" stroke-linejoin="round"/><path d="M104 26 c2 -6 6 -8 11 -6" fill="none" stroke="${INK}" stroke-width="4.5" stroke-linecap="round"/>
+        <path class="intro-ringfront" d="M17 120 A92 26 -18 0 0 183 88" fill="none" stroke="#fff" stroke-width="9"/>
+      </svg>
+      <div class="intro-title">Le Petit Observatoire</div>
+      <div class="intro-sub">avec Cosmo</div>
+      <span class="intro-star s1"></span><span class="intro-star s2"></span><span class="intro-star s3"></span>
+    </div>`;
+    document.body.appendChild(el);
+    const quick = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setTimeout(() => el.classList.add('out'), quick ? 500 : 1700);
+    setTimeout(() => el.remove(), quick ? 900 : 2300);
+  })();
+
   // app chrome: icons in the tab bar, a compact top bar on inner screens, the big header on Accueil only
   const ICONS = {
     home: '<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg>',
