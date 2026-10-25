@@ -401,3 +401,5 @@ h2{letter-spacing:.6px}
 @media (min-width:1100px){.side .logo{padding:16px 22px 18px}}
 .title h1{background:linear-gradient(180deg,#fff 0%,#ffe1f1 40%,#ff6fbf 52%,#ffd0e8 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; -webkit-text-stroke:1.2px #4a2a7a; filter:drop-shadow(0 5px 0 #8a4fc9) drop-shadow(0 9px 0 rgba(42,21,64,.18))}
 .logo-back ellipse{stroke:#fff}
+.title h1{font-size:clamp(25px,6.4vw,58px); white-space:nowrap}
+@media (max-width:640px){.logo{padding:14px 18px 18px} .logo-back g{opacity:.3}}

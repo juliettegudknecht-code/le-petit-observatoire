@@ -8,7 +8,7 @@
   const quiet = p => { if (p && p.catch) p.catch(() => {}); };
 
   // Light text on the purple status bar, no pinch zoom inside the app
-  if (StatusBar) quiet(StatusBar.setStyle({ style: 'DARK' }));
+  if (StatusBar) quiet(StatusBar.setStyle({ style: 'LIGHT' }));
   const vp = document.querySelector('meta[name="viewport"]');
   if (vp) vp.content = 'width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover';
 

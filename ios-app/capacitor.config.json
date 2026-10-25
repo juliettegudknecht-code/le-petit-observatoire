@@ -2,17 +2,17 @@
   "appId": "com.juliettegudknecht.observatoire",
   "appName": "Le Petit Observatoire",
   "webDir": "www",
-  "backgroundColor": "#2a1850",
+  "backgroundColor": "#ffd4ea",
   "ios": {
     "contentInset": "automatic",
-    "backgroundColor": "#2a1850",
+    "backgroundColor": "#ffd4ea",
     "allowsLinkPreview": false
   },
   "plugins": {
     "SplashScreen": {
       "launchAutoHide": true,
       "launchShowDuration": 0,
-      "backgroundColor": "#2a1850"
+      "backgroundColor": "#ffd4ea"
     }
   }
 }
