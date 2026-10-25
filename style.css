@@ -328,3 +328,52 @@ footer{display:inline-block; position:relative; left:50%; transform:translateX(-
 .skyline{opacity:.72}
 .blob{opacity:.22}
 .sticker,.titlehat,.drift{display:none}
+
+/* Duolingo-style chrome: flat fills, rounded, a darker bottom edge that presses down. Ink stays on the drawings. */
+:root{--edge:#d8c8f5; --shadow:0 4px 0 var(--edge)}
+.btn,.tab,.opt,.game,.chip,.station,.shopitem,.wearbtn,.mem .memface,.starbadge,.radio,.bubble,.panel,.face,.buildline,.reminderRow input[type=time],.kbd-hint,footer,.tr-pop,.tr-btn{border-width:2px; border-color:var(--edge); box-shadow:0 4px 0 var(--edge)}
+.panel{background:#fff; border-radius:22px; box-shadow:0 5px 0 var(--edge)}
+.panel.soft{background:#f3edff} .panel.pink{background:#ffe3f1}
+.btn{border-radius:16px; font-weight:700; border-color:transparent; box-shadow:0 4px 0 #d9a94a; transition:transform .06s, box-shadow .06s}
+.btn.pink{box-shadow:0 4px 0 #d64f9c} .btn.lilac{box-shadow:0 4px 0 #8f63e6} .btn.plain{box-shadow:0 4px 0 var(--edge)} .btn.good{box-shadow:0 4px 0 #2ea86a} .btn.bad{box-shadow:0 4px 0 #d14b6a}
+.btn:hover{transform:none; filter:brightness(1.04)}
+.btn:active,.btn.down{transform:translateY(4px); box-shadow:0 0 0 transparent}
+.tab{border-radius:16px; border-color:transparent; background:#fff; box-shadow:0 4px 0 var(--edge); font-weight:700}
+.tab.on{background:var(--pink); color:#fff; transform:none; box-shadow:0 4px 0 #d64f9c}
+.tab:active{transform:translateY(4px); box-shadow:none}
+.opt{border-radius:16px; border-color:#ead9ff; box-shadow:0 4px 0 var(--edge)} .opt:hover{background:#f3edff}
+.opt.right{background:#dff7ea; border-color:#4ccf8a; box-shadow:0 4px 0 #2ea86a} .opt.wrong{background:#ffe0e6; border-color:#ff6b8a; box-shadow:0 4px 0 #d14b6a}
+.opt:not(:disabled):active{transform:translateY(4px); box-shadow:none}
+.game{border-radius:18px; border-color:#ead9ff}
+.chip{border-color:transparent; box-shadow:0 3px 0 #d9a94a} .chip.in{box-shadow:0 3px 0 #b48cff} .chip.right{box-shadow:0 3px 0 #2ea86a} .chip.wrong{box-shadow:0 3px 0 #d14b6a}
+.face{border-color:#ead9ff; box-shadow:0 6px 0 var(--edge); border-radius:22px}
+.memface{border-color:#ead9ff}
+.starbadge,.radio,.bubble{border-color:#ead9ff}
+.starbadge.streak{margin-left:8px}
+.starbadge.streak svg{width:22px;height:22px}
+.title h1{-webkit-text-stroke:0; color:#fff; text-shadow:0 4px 0 #d64f9c, 0 8px 0 rgba(42,21,64,.12)}
+.orbit .track{border-top:0; height:12px; top:11px; background:#efe6ff; border-radius:8px}
+.orbit .dot{top:12px; width:12px; height:12px; border:2px solid #fff}
+.speak{box-shadow:0 3px 0 #2a8fb8}
+.combo{border-color:transparent; box-shadow:0 4px 0 #d9a94a}
+/* lesson path */
+.pathpanel .path{display:flex; flex-direction:column; align-items:center; gap:22px; padding:18px 0 6px}
+.pnode{position:relative; display:flex; flex-direction:column; align-items:center; gap:6px; width:150px}
+.pbtn{position:relative; width:72px; height:72px; border:0; border-radius:50%; background:none; padding:0}
+.pball{position:absolute; inset:9px; border-radius:50%; background:var(--c, var(--lilac)); box-shadow:inset 0 -6px 0 rgba(42,21,64,.18), 0 5px 0 rgba(42,21,64,.18)}
+.pbtn:active .pball{transform:translateY(4px); box-shadow:inset 0 -6px 0 rgba(42,21,64,.18)}
+.pbtn .ring{position:absolute; inset:0; width:100%; height:100%}
+.pbtn.quiznode .pball{background:var(--pink); inset:6px}
+.pnode.done .pball{box-shadow:inset 0 -6px 0 rgba(42,21,64,.18), 0 5px 0 rgba(42,21,64,.18), 0 0 0 4px #fff, 0 0 0 7px #4ccf8a}
+.plabel{text-align:center; line-height:1.15} .plabel b{font-family:'Fredoka',sans-serif; font-weight:600; font-size:17px; display:block} .plabel small{opacity:.65}
+.pstart{position:absolute; top:-30px; left:50%; translate:-50% 0; background:#fff; border:2px solid var(--edge); border-radius:12px; padding:3px 12px; font-family:'Fredoka',sans-serif; font-size:15px; color:var(--lilac3); box-shadow:0 3px 0 var(--edge); animation:bounce 1.4s ease-in-out infinite; white-space:nowrap}
+.pstart::after{content:''; position:absolute; left:50%; bottom:-8px; width:12px; height:12px; background:#fff; border-right:2px solid var(--edge); border-bottom:2px solid var(--edge); transform:translateX(-50%) rotate(45deg)}
+@keyframes bounce{0%,100%{translate:-50% 0}50%{translate:-50% -6px}}
+.pnode.current .pball{box-shadow:inset 0 -6px 0 rgba(42,21,64,.18), 0 5px 0 rgba(42,21,64,.18), 0 0 0 4px #fff, 0 0 0 7px var(--pink)}
+/* progress bars */
+.bars{display:flex; flex-direction:column; gap:8px; margin:6px 0 12px}
+.bar{display:grid; grid-template-columns:110px 1fr 70px; align-items:center; gap:10px; font-size:15px}
+.bar .track{height:14px; background:#efe6ff; border-radius:8px; overflow:hidden; box-shadow:inset 0 2px 0 rgba(42,21,64,.08)}
+.bar .fill{display:block; height:100%; border-radius:8px; min-width:4px; transition:width .5s}
+.bar small{text-align:right; opacity:.7}
+@media (max-width:520px){.bar{grid-template-columns:90px 1fr 60px; font-size:14px} .pnode{width:120px}}
