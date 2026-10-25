@@ -3,7 +3,17 @@
   const C = window.Capacitor;
   const isNative = !!(C && C.isNativePlatform && C.isNativePlatform());
   const standalone = window.matchMedia && (matchMedia('(display-mode: standalone)').matches || navigator.standalone);
-  if (!isNative && !standalone) return;
+  if (!isNative && !standalone) {
+    // on an iPhone in Safari: a one-line hint on how to install it, dismissable
+    const ios = /iPhone|iPad/.test(navigator.userAgent);
+    if (ios && !localStorage.getItem('lpo_a2hs')) {
+      const hint = document.createElement('div'); hint.className = 'a2hs';
+      hint.innerHTML = '<span>Pour l\u2019avoir comme une appli : touche Partager, puis <b>Sur l\u2019\u00e9cran d\u2019accueil</b>.</span><button class="btn sm plain" aria-label="Fermer">OK</button>';
+      hint.querySelector('button').onclick = () => { hint.remove(); try { localStorage.setItem('lpo_a2hs', '1'); } catch (e) {} };
+      document.body.appendChild(hint);
+    }
+    return;
+  }
   document.body.classList.add('native');
 
   // intro reel: planet pops in, ring sweeps round, the name rises, then it fades into the app
@@ -45,6 +55,9 @@
   const titleOf = () => { const t = document.querySelector('.tab.on'); return t ? t.textContent.trim() : ''; };
   const syncView = () => { const t = document.querySelector('.tab.on'); const home = !t || t.dataset.view === 'home'; document.body.classList.toggle('home', home); bar.querySelector('.appbar-title').textContent = home ? '' : titleOf(); };
   new MutationObserver(syncView).observe(document.getElementById('tabs'), { attributes: true, subtree: true, attributeFilter: ['class'] });
+  // reopen on the tab you left
+  try { const last = localStorage.getItem('lpo_tab'); const t = last && document.querySelector('.tab[data-view="' + last + '"]'); if (t && last !== 'home') t.click(); } catch (e) {}
+  document.getElementById('tabs').addEventListener('click', e => { const t = e.target.closest('.tab'); if (t) try { localStorage.setItem('lpo_tab', t.dataset.view); } catch (err) {} });
   syncView();
   // home hero: one big Continuer button that opens the next planet on the path
   const top = document.querySelector('header.top');

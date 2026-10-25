@@ -4,7 +4,7 @@
 set -e
 cd "$(dirname "$0")"
 rm -rf www && mkdir www
-for f in index.html privacy.html style.css data.js app.js games.js english.js interactive.js paris.js path.js native.js manifest.webmanifest icon-512.png icon-180.png; do
+for f in index.html privacy.html style.css data.js app.js games.js english.js interactive.js paris.js path.js native.js sw.js manifest.webmanifest icon-512.png icon-180.png; do
   cp "../$f" www/
 done
 cp -R ../fonts www/fonts
