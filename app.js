@@ -26,7 +26,7 @@
   const byLevel = items => { const f = items.filter(it => it.lvl <= S.level); return f.length >= 8 ? f : items; };
   const SPK = '<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#2a1540"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="#2a1540" stroke-width="2.2" stroke-linecap="round"/></svg>';
   const STAR = '<svg viewBox="0 0 100 100"><path d="M50 4 L60 40 L96 50 L60 60 L50 96 L40 60 L4 50 L40 40 Z" fill="#ffd98a" stroke="#2a1540" stroke-width="6" stroke-linejoin="round"/></svg>';
-  const ROCKET = '<svg viewBox="0 0 40 40"><path d="M8 32 l6 -6" stroke="#ffb6a8" stroke-width="5" stroke-linecap="round"/><path d="M12 28 C10 18 18 8 32 8 C32 22 22 30 12 28 Z" fill="#fff" stroke="#2a1540" stroke-width="3" stroke-linejoin="round"/><circle cx="23" cy="17" r="4" fill="#7fd3ff" stroke="#2a1540" stroke-width="2.5"/><path d="M14 20 l-6 2 4 4 M20 26 l-2 6 4 -4" fill="#ff7ac6" stroke="#2a1540" stroke-width="2.5" stroke-linejoin="round"/></svg>';
+  const ROCKET = '<svg viewBox="0 0 40 40"><circle cx="20" cy="21" r="14" fill="#e9c79b" stroke="#2a1540" stroke-width="3"/><path d="M7 16 C4 20 5 26 9 28 C11 24 12 20 12 16 Z M33 16 C36 20 35 26 31 28 C29 24 28 20 28 16 Z" fill="#3a2a24" stroke="#2a1540" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="20" cy="26" rx="8" ry="6" fill="#3a2a24"/><circle cx="15" cy="20" r="3.4" fill="#fff" stroke="#2a1540" stroke-width="1.5"/><circle cx="25" cy="20" r="3.4" fill="#fff" stroke="#2a1540" stroke-width="1.5"/><circle cx="15.5" cy="20.5" r="2" fill="#2a1540"/><circle cx="25.5" cy="20.5" r="2" fill="#2a1540"/><ellipse cx="20" cy="25" rx="2.6" ry="1.8" fill="#120a0a"/><path d="M10 11 C12 4 20 3 24 6 C28 4 33 7 30 12 C24 9 16 9 10 11Z" fill="#e03a3a" stroke="#2a1540" stroke-width="2.5" stroke-linejoin="round"/></svg>';
 
   // ---------- speech ----------
   let voice = null;
@@ -52,13 +52,13 @@
     let out = '';
     for (let i = 0; i < 70; i++) {
       const x = seed(i) * W, y = seed(i + 1000) * H, r = 0.8 + seed(i + 2000) * 1.6;
-      out += `<circle class="twinkle" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${r.toFixed(1)}" fill="#fff" style="animation-delay:${(-seed(i + 3000) * 3).toFixed(1)}s"/>`;
+      out += `<circle class="twinkle" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${(r * 1.6).toFixed(1)}" fill="${i % 3 ? '#fff' : '#ffb6d9'}" style="animation-delay:${(-seed(i + 3000) * 3).toFixed(1)}s"/>`;
     }
     const n = Math.min(S.stars, 300);
     for (let i = 0; i < n; i++) {
       const x = 20 + seed(i + 5000) * (W - 40), y = 20 + seed(i + 6000) * (H - 40), s = 5 + seed(i + 7000) * 7;
       const c = ['#ffd98a', '#ff7ac6', '#fff', '#b48cff'][i % 4];
-      out += `<path class="twinkle" transform="translate(${x.toFixed(0)} ${y.toFixed(0)}) scale(${(s / 50).toFixed(3)})" d="M0 -50 L10 -10 L50 0 L10 10 L0 50 L-10 10 L-50 0 L-10 -10 Z" fill="${c}" style="animation-delay:${(-seed(i + 8000) * 3).toFixed(1)}s"/>`;
+      out += `<path class="twinkle" transform="translate(${x.toFixed(0)} ${y.toFixed(0)}) scale(${(s / 50).toFixed(3)})" d="M0 -50 L10 -10 L50 0 L10 10 L0 50 L-10 10 L-50 0 L-10 -10 Z" fill="${c}" stroke="#2a1540" stroke-width="8" stroke-linejoin="round" style="animation-delay:${(-seed(i + 8000) * 3).toFixed(1)}s"/>`;
     }
     sky.innerHTML = out;
     $('#starCount').textContent = S.stars;

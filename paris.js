@@ -18,11 +18,32 @@
   const svg = (id, cls) => `<svg viewBox="0 0 100 100" class="${cls || ''}" aria-hidden="true">${I[id]}</svg>`;
   const seed = n => { const x = Math.sin(n * 9301 + 49297) * 233280; return x - Math.floor(x); };
 
-  // things drifting in the night sky, behind everything
+
+  // puffy cartoon clouds and a Paris rooftop skyline for the pastel sky
+  function clouds() {
+    const cloud = '<svg viewBox="0 0 180 110"><path d="M34 92 C14 92 8 72 20 62 C8 44 30 30 46 40 C52 16 90 12 102 36 C122 26 146 40 140 60 C166 58 172 92 148 92 Z" fill="#fff" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/><circle cx="60" cy="58" r="6" fill="#ffd4ea"/><circle cx="110" cy="52" r="5" fill="#ead6ff"/></svg>';
+    return [0, 1, 2, 3, 4].map(k => `<span class="cloud" style="top:${(4 + seed(k + 41) * 40).toFixed(1)}%;animation-duration:${(70 + seed(k + 43) * 60).toFixed(0)}s;animation-delay:${(-seed(k + 47) * 120).toFixed(0)}s;scale:${(.6 + seed(k + 53) * .7).toFixed(2)}">${cloud}</span>`).join('');
+  }
+  function skyline() {
+    const INK = '#2a1540', fills = ['#cdb6ff', '#ffc2e2', '#fff1d6', '#e6d9ff', '#ffd9c7'];
+    let x = 0, out = '', k = 0;
+    while (x < 1240) {
+      const w = 56 + Math.round(seed(k + 61) * 60), h = 70 + Math.round(seed(k + 67) * 70), f = fills[k % fills.length], top = 200 - h;
+      out += `<path d="M${x} 200 V${top + 18} L${x + 8} ${top} H${x + w - 8} L${x + w} ${top + 18} V200Z" fill="${f}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`;
+      out += `<path d="M${x + 8} ${top} L${x + 14} ${top - 10} H${x + w - 14} L${x + w - 8} ${top}" fill="#8f63e6" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`;
+      if (seed(k + 71) > .5) out += `<rect x="${x + w - 26}" y="${top - 26}" width="10" height="18" fill="${INK}"/>`;
+      for (let r = 0; r < Math.floor((h - 30) / 26); r++) for (let c = 0; c < Math.floor((w - 20) / 22); c++) out += `<rect x="${x + 14 + c * 22}" y="${top + 28 + r * 26}" width="12" height="16" rx="3" fill="#fff" stroke="${INK}" stroke-width="2.5"/>`;
+      x += w - 4; k++;
+    }
+    const eiffel = `<g transform="translate(560 0)"><path d="M60 8 L70 90 C72 112 80 130 100 170 L72 170 C68 156 64 150 60 150 C56 150 52 156 48 170 L20 170 C40 130 48 112 50 90 Z" fill="#b48cff" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/><path d="M46 96 h28 M34 134 h52" stroke="${INK}" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="8" r="5" fill="#ff7ac6" stroke="${INK}" stroke-width="3"/></g>`;
+    return `<span class="skyline"><svg viewBox="0 0 1240 200" preserveAspectRatio="xMidYMax slice">${out}${eiffel}<path d="M0 200 H1240" stroke="${INK}" stroke-width="5"/></svg></span>`;
+  }
+
+  // things drifting in the sky, behind everything
   const sky = document.createElement('div'); sky.className = 'parisSky'; sky.setAttribute('aria-hidden', 'true');
   const drift = ['macaron', 'beret', 'perfume', 'heart', 'croissant', 'lipstick', 'glasses', 'heel', 'bag', 'macaron', 'heart'];
   sky.innerHTML = drift.map((id, k) => `<span class="drift" style="left:${(4 + seed(k + 11) * 92).toFixed(1)}%;top:${(6 + seed(k + 77) * 84).toFixed(1)}%;animation-duration:${(9 + seed(k + 5) * 8).toFixed(1)}s;animation-delay:${(-seed(k + 9) * 10).toFixed(1)}s;transform:rotate(${(seed(k + 3) * 40 - 20).toFixed(0)}deg)">${svg(id)}</span>`).join('')
-    + `<span class="eiffel">${svg('eiffel')}</span>`;
+    + `<span class="eiffel">${svg('eiffel')}</span>` + clouds() + skyline();
   document.body.insertBefore(sky, document.body.firstChild);
 
   // a beret on the title
