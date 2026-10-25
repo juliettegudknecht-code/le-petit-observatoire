@@ -89,43 +89,63 @@
 
   <button class="char c" id="charC" aria-label="Cosmo">
     <span class="bubble" id="bubbleC"></span>
-    <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
-      <!-- body -->
-      <path d="M58 150 C50 180 56 210 72 216 L128 216 C144 210 150 180 142 150 Z" fill="#e9c79b" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
-      <!-- tail curl -->
-      <path d="M142 160 c14 -4 22 6 14 16 c-6 8 -16 4 -12 -4" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
-      <path d="M142 160 c14 -4 22 6 14 16 c-6 8 -16 4 -12 -4" fill="none" stroke="#e9c79b" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+    <svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="fawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3d9ad"/><stop offset="1" stop-color="#dbb57f"/></linearGradient>
+        <radialGradient id="eye" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#6b4a2e"/><stop offset=".55" stop-color="#2b1a10"/><stop offset="1" stop-color="#120a06"/></radialGradient>
+        <linearGradient id="beretg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f04d4d"/><stop offset="1" stop-color="#c22b2b"/></linearGradient>
+      </defs>
+      <!-- tail curl, behind the body -->
+      <path d="M138 176 c20 -10 34 2 28 18 c-5 12 -22 12 -24 0" fill="none" stroke="#2a1540" stroke-width="12" stroke-linecap="round"/>
+      <path d="M138 176 c20 -10 34 2 28 18 c-5 12 -22 12 -24 0" fill="none" stroke="#dbb57f" stroke-width="6" stroke-linecap="round"/>
+      <!-- body, sitting -->
+      <path d="M62 158 C46 180 46 218 60 232 L140 232 C154 218 154 180 138 158 C126 148 74 148 62 158 Z" fill="url(#fawn)" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <!-- lighter chest -->
+      <path d="M80 164 C72 186 74 210 84 226 L116 226 C126 210 128 186 120 164 C110 158 90 158 80 164 Z" fill="#fbead0" opacity=".9"/>
+      <!-- front legs -->
+      <path d="M74 190 C66 204 66 220 70 232 L92 232 C94 218 92 204 88 190 Z" fill="url(#fawn)" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M112 190 C108 204 106 218 108 232 L130 232 C134 220 134 204 126 190 Z" fill="url(#fawn)" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
       <!-- paws -->
-      <ellipse cx="80" cy="216" rx="16" ry="9" fill="#e9c79b" stroke="#2a1540" stroke-width="4"/>
-      <ellipse cx="120" cy="216" rx="16" ry="9" fill="#e9c79b" stroke="#2a1540" stroke-width="4"/>
-      <path d="M74 218 v5 M80 219 v6 M86 218 v5 M114 218 v5 M120 219 v6 M126 218 v5" stroke="#2a1540" stroke-width="2.5" stroke-linecap="round"/>
-      <!-- collar -->
-      <path d="M62 150 C80 160 120 160 138 150" fill="none" stroke="#8f63e6" stroke-width="9" stroke-linecap="round"/>
-      <path d="M62 150 C80 160 120 160 138 150" fill="none" stroke="#2a1540" stroke-width="2"/>
-      <path d="M100 160 l-14 -8 v16 z M100 160 l14 -8 v16 z" fill="#ff7ac6" stroke="#2a1540" stroke-width="3" stroke-linejoin="round"/>
-      <circle cx="100" cy="160" r="4.5" fill="#d4af37" stroke="#2a1540" stroke-width="2.5"/>
-      <!-- head -->
-      <circle cx="100" cy="96" r="48" fill="#e9c79b" stroke="#2a1540" stroke-width="4"/>
-      <!-- ears -->
-      <path d="M58 76 C48 90 52 108 62 116 C70 104 72 90 72 78 Z" fill="#3a2a24" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
-      <path d="M142 76 C152 90 148 108 138 116 C130 104 128 90 128 78 Z" fill="#3a2a24" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
-      <!-- beret -->
-      <path d="M48 70 C44 44 76 28 100 30 C126 32 158 44 152 70 C132 60 68 60 48 70Z" fill="#e03a3a" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
-      <path d="M50 70 C72 76 128 76 150 70" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
-      <path d="M100 30 c2 -8 8 -10 14 -8" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
-      <!-- wrinkles -->
-      <path d="M82 66 C92 60 108 60 118 66 M86 58 C94 54 106 54 114 58" fill="none" stroke="#2a1540" stroke-width="3" stroke-linecap="round" opacity=".6"/>
-      <!-- mask -->
-      <ellipse cx="100" cy="116" rx="30" ry="22" fill="#3a2a24"/>
-      <!-- eyes -->
-      <circle cx="78" cy="96" r="13" fill="#fff" stroke="#2a1540" stroke-width="3"/>
-      <circle cx="122" cy="96" r="13" fill="#fff" stroke="#2a1540" stroke-width="3"/>
-      <circle cx="80" cy="98" r="8.5" fill="#2a1540"/><circle cx="120" cy="98" r="8.5" fill="#2a1540"/>
-      <circle cx="83" cy="94" r="3" fill="#fff"/><circle cx="123" cy="94" r="3" fill="#fff"/>
-      <!-- nose and mouth -->
-      <ellipse cx="100" cy="110" rx="9" ry="6" fill="#120a0a" stroke="#2a1540" stroke-width="2"/>
-      <path d="M100 116 v8 M88 126 C94 132 106 132 112 126" fill="none" stroke="#2a1540" stroke-width="3" stroke-linecap="round"/>
-      <path d="M94 128 c2 8 10 8 12 0 z" fill="#ff8fb4" stroke="#2a1540" stroke-width="2"/>
+      <path d="M66 232 C64 240 70 244 80 244 C90 244 96 240 94 232 Z" fill="#f3d9ad" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M106 232 C104 240 110 244 120 244 C130 244 136 240 134 232 Z" fill="#f3d9ad" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M74 238 v4 M80 239 v5 M86 238 v4 M114 238 v4 M120 239 v5 M126 238 v4" stroke="#2a1540" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- collar with bow and tag -->
+      <path d="M64 158 C80 170 120 170 136 158" fill="none" stroke="#8f63e6" stroke-width="10" stroke-linecap="round"/>
+      <path d="M64 158 C80 170 120 170 136 158" fill="none" stroke="#2a1540" stroke-width="2"/>
+      <path d="M100 168 l-15 -9 v18 z M100 168 l15 -9 v18 z" fill="#ff7ac6" stroke="#2a1540" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="100" cy="168" r="4.5" fill="#d4af37" stroke="#2a1540" stroke-width="2.5"/>
+      <!-- head: broad and round, with a soft neck -->
+      <path d="M46 104 C44 66 68 42 100 42 C132 42 156 66 154 104 C153 136 130 158 100 158 C70 158 47 136 46 104 Z" fill="url(#fawn)" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <!-- forehead wrinkles -->
+      <path d="M78 74 C88 66 112 66 122 74 M82 84 C90 78 110 78 118 84 M92 62 C97 58 103 58 108 62" fill="none" stroke="#9c7a4f" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+      <!-- dark mask around the muzzle and eyes -->
+      <path d="M64 108 C68 90 132 90 136 108 C140 130 124 150 100 150 C76 150 60 130 64 108 Z" fill="#3a2a24"/>
+      <path d="M70 110 C76 100 124 100 130 110" fill="none" stroke="#2a1b14" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+      <!-- cheeks -->
+      <circle cx="62" cy="122" r="9" fill="#ff8fb4" opacity=".45"/><circle cx="138" cy="122" r="9" fill="#ff8fb4" opacity=".45"/>
+      <!-- eyes: big, round, dark, set wide -->
+      <circle cx="79" cy="106" r="14" fill="#fff" stroke="#2a1540" stroke-width="3"/>
+      <circle cx="121" cy="106" r="14" fill="#fff" stroke="#2a1540" stroke-width="3"/>
+      <circle cx="80" cy="107" r="11" fill="url(#eye)"/><circle cx="120" cy="107" r="11" fill="url(#eye)"/>
+      <circle cx="84" cy="102" r="3.6" fill="#fff"/><circle cx="124" cy="102" r="3.6" fill="#fff"/>
+      <circle cx="76" cy="112" r="1.6" fill="#fff" opacity=".8"/><circle cx="116" cy="112" r="1.6" fill="#fff" opacity=".8"/>
+      <!-- nose, flat and wide -->
+      <path d="M86 122 C88 114 112 114 114 122 C114 130 106 134 100 134 C94 134 86 130 86 122 Z" fill="#120a0a" stroke="#2a1540" stroke-width="2"/>
+      <ellipse cx="94" cy="123" rx="3" ry="2.2" fill="#2e2020"/><ellipse cx="106" cy="123" rx="3" ry="2.2" fill="#2e2020"/>
+      <path d="M90 118 c3 -2 6 -2 8 -1" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+      <!-- mouth and tongue -->
+      <path d="M100 134 v6 M86 140 C92 148 108 148 114 140" fill="none" stroke="#2a1540" stroke-width="3" stroke-linecap="round"/>
+      <path d="M93 143 c2 9 12 9 14 0 z" fill="#ff8fb4" stroke="#2a1540" stroke-width="2"/>
+      <!-- ears: soft velvet buttons folded forward over the beret edge -->
+      <path d="M50 78 C42 64 54 46 70 52 C74 68 74 90 70 110 C60 104 52 94 50 78 Z" fill="#3a2a24" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M150 78 C158 64 146 46 130 52 C126 68 126 90 130 110 C140 104 148 94 150 78 Z" fill="#3a2a24" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M58 64 C62 72 64 86 64 98 M142 64 C138 72 136 86 136 98" fill="none" stroke="#1f1410" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+      <!-- beret perched on top, tilted -->
+      <path d="M66 54 C58 32 90 14 118 20 C146 26 156 44 142 60 C122 50 90 50 66 54 Z" fill="url(#beretg)" stroke="#2a1540" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M68 54 C92 62 122 62 142 60" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
+      <path d="M70 54 C94 60 120 60 140 58" fill="none" stroke="#a52020" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+      <path d="M112 20 c2 -8 8 -11 14 -9" fill="none" stroke="#2a1540" stroke-width="4" stroke-linecap="round"/>
+      <path d="M82 36 C92 28 106 26 118 28" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".35"/>
     </svg>
   </button>
 </header>
